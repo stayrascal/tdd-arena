@@ -1,5 +1,6 @@
 package com.tw.arena.role;
 
+import com.tw.arena.armor.Armor;
 import com.tw.arena.weapon.Weapon;
 
 /**
@@ -16,6 +17,14 @@ public class Solider extends Player {
 
     public Solider(String name, int blood, int damage) {
         super(name, blood, damage);
+    }
+
+    public Solider(String name, int bllod, int damage, Weapon weapon, Armor armor) {
+        super(name, bllod, damage, weapon, armor);
+    }
+
+    public Solider(String name, int blood, int damage, Armor armor) {
+        super(name, blood, damage, armor);
     }
 
 

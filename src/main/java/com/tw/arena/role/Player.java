@@ -1,5 +1,7 @@
 package com.tw.arena.role;
 
+import com.tw.arena.armor.Armor;
+import com.tw.arena.armor.NoArmor;
 import com.tw.arena.weapon.NoWeapon;
 import com.tw.arena.weapon.Weapon;
 
@@ -7,34 +9,43 @@ import java.util.Objects;
 
 import static java.lang.String.format;
 
-/**
- * Date: 2015/11/29
- * Time: 18:13
- *
- * @author Rascal
- */
 public abstract class Player implements Role {
 
-    protected String name;
+    private String name;
 
-    protected int blood;
+    private int blood;
 
-    protected int damage;
+    private int damage;
 
-    protected Weapon weapon;
+    private int defense;
 
-    public Player(String name, int blood, int damage) {
-        this.name = name;
-        this.blood = blood;
-        this.damage = damage;
-        this.weapon = NoWeapon.getInstance();
-    }
+    private Weapon weapon;
 
-    public Player(String name, int blood, int damage, Weapon weapon) {
+    private Armor armor;
+
+    private Player(String name, int blood, int damage, int defense, Weapon weapon, Armor armor) {
         this.name = name;
         this.blood = blood;
         this.damage = damage + weapon.getDamage();
+        this.defense = defense + armor.getDefense();
         this.weapon = weapon;
+        this.armor = armor;
+    }
+
+    public Player(String name, int blood, int damage) {
+        this(name, blood, damage, 0, NoWeapon.getInstance(), NoArmor.getInstance());
+    }
+
+    public Player(String name, int blood, int damage, Weapon weapon) {
+        this(name, blood, damage, 0, weapon, NoArmor.getInstance());
+    }
+
+    public Player(String name, int blood, int damage, Armor armor) {
+        this(name, blood, damage, 0, NoWeapon.getInstance(), armor);
+    }
+
+    public Player(String name, int blood, int damage, Weapon weapon, Armor armor) {
+        this(name, blood, damage, 0, weapon, armor);
     }
 
     @Override
@@ -53,13 +64,18 @@ public abstract class Player implements Role {
     }
 
     @Override
+    public int getDefense() {
+        return defense;
+    }
+
+    @Override
     public Weapon getWeapon() {
         return weapon;
     }
 
     @Override
-    public boolean isAlive() {
-        return getBlood() >= 0;
+    public Armor getArmor() {
+        return armor;
     }
 
     @Override
@@ -68,14 +84,28 @@ public abstract class Player implements Role {
     }
 
     @Override
+    public boolean isAlive() {
+        return getBlood() >= 0;
+    }
+
+    @Override
     public String getAttackType() {
         return Objects.equals(getWeapon().getName(), "") ? "" : format("用%s", getWeapon().getName());
     }
 
     @Override
+    public String getArmorType() {
+        return Objects.equals(getArmor().getName(), "") ? "" : format("装备了%s的", getArmor().getName());
+    }
+
+    @Override
     public String beAttacked(Role attacker) {
-        this.blood -= attacker.getDamage();
-        return format("%s%s攻击了%s,%s受到了%d点伤害,%s剩余生命: %d", attacker.getRoleIdentity(), attacker.getAttackType(),
-                getRoleIdentity(), getName(), attacker.getDamage(), getName(), getBlood());
+        this.blood -= blood(attacker.getDamage());
+        return format("%s%s攻击了%s%s,%s受到了%d点伤害,%s剩余生命: %d", attacker.getRoleIdentity(), attacker.getAttackType(),
+                getArmorType(), getRoleIdentity(), getName(), blood(attacker.getDamage()), getName(), getBlood());
+    }
+
+    private int blood(int damage) {
+        return damage > getDefense() ? damage - getDefense() : 0;
     }
 }

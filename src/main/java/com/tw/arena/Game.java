@@ -28,5 +28,4 @@ public class Game {
         }
         printer.print(String.format("%s被打败了", loser.getName()));
     }
-
 }
