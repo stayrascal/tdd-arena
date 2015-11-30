@@ -1,8 +1,5 @@
-package com.tw.arena;
+package com.tw.arena.role;
 
-import com.tw.arena.role.Normal;
-import com.tw.arena.role.Role;
-import com.tw.arena.role.Solider;
 import com.tw.arena.weapon.Cudgel;
 import com.tw.arena.weapon.Weapon;
 import org.junit.Test;
