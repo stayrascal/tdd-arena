@@ -1,11 +1,8 @@
 package com.tw.arena.weapon;
 
-/**
- * Date: 2015/11/29
- * Time: 19:51
- *
- * @author Rascal
- */
+import com.tw.arena.weapon.property.NoWeaponProperty;
+import com.tw.arena.weapon.property.WeaponProperty;
+
 public class NoWeapon implements Weapon {
 
     private static NoWeapon INSTANCE = new NoWeapon();
@@ -26,4 +23,10 @@ public class NoWeapon implements Weapon {
     public int getDamage() {
         return 0;
     }
+
+    @Override
+    public WeaponProperty getWeaponProperty() {
+        return NoWeaponProperty.getInstance();
+    }
+
 }

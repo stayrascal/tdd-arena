@@ -1,16 +1,26 @@
 package com.tw.arena.weapon;
 
-/**
- * Date: 2015/11/29
- * Time: 19:15
- *
- * @author Rascal
- */
+import com.tw.arena.weapon.property.NoWeaponProperty;
+import com.tw.arena.weapon.property.WeaponProperty;
+
 public abstract class BaseWeapon implements Weapon {
 
-    protected String name;
+    private String name;
 
-    protected int damage;
+    private int damage;
+
+    private WeaponProperty property;
+
+
+    public BaseWeapon(String name, int damage) {
+        this(name, damage, NoWeaponProperty.getInstance());
+    }
+
+    public BaseWeapon(String name, int damage, WeaponProperty property) {
+        this.name = name;
+        this.damage = damage;
+        this.property = property;
+    }
 
     @Override
     public int getDamage() {
@@ -22,8 +32,8 @@ public abstract class BaseWeapon implements Weapon {
         return name;
     }
 
-    public BaseWeapon(String name, int damage) {
-        this.name = name;
-        this.damage = damage;
+    @Override
+    public WeaponProperty getWeaponProperty() {
+        return property;
     }
 }

@@ -2,6 +2,8 @@ package com.tw.arena.role;
 
 import com.tw.arena.armor.Armor;
 import com.tw.arena.armor.NoArmor;
+import com.tw.arena.attack.AttackStatus;
+import com.tw.arena.attack.NoAttackStatus;
 import com.tw.arena.weapon.NoWeapon;
 import com.tw.arena.weapon.Weapon;
 
@@ -19,33 +21,43 @@ public abstract class Player implements Role {
 
     private int defense;
 
+    private int delay;
+
     private Weapon weapon;
 
     private Armor armor;
 
-    private Player(String name, int blood, int damage, int defense, Weapon weapon, Armor armor) {
+    private AttackStatus attackStatus;
+
+    private Player(String name, int blood, int damage, int defense, int delay, Weapon weapon, Armor armor, AttackStatus attackStatus) {
         this.name = name;
         this.blood = blood;
-        this.damage = damage + weapon.getDamage();
+        this.damage = (damage + weapon.getDamage()) * attackStatus.getMultiple();
         this.defense = defense + armor.getDefense();
+        this.delay = delay;
         this.weapon = weapon;
         this.armor = armor;
+        this.attackStatus = attackStatus;
     }
 
     public Player(String name, int blood, int damage) {
-        this(name, blood, damage, 0, NoWeapon.getInstance(), NoArmor.getInstance());
+        this(name, blood, damage, 0, 0, NoWeapon.getInstance(), NoArmor.getInstance(), NoAttackStatus.getInstance());
     }
 
     public Player(String name, int blood, int damage, Weapon weapon) {
-        this(name, blood, damage, 0, weapon, NoArmor.getInstance());
+        this(name, blood, damage, 0, 0, weapon, NoArmor.getInstance(), NoAttackStatus.getInstance());
     }
 
     public Player(String name, int blood, int damage, Armor armor) {
-        this(name, blood, damage, 0, NoWeapon.getInstance(), armor);
+        this(name, blood, damage, 0, 0, NoWeapon.getInstance(), armor, NoAttackStatus.getInstance());
     }
 
     public Player(String name, int blood, int damage, Weapon weapon, Armor armor) {
-        this(name, blood, damage, 0, weapon, armor);
+        this(name, blood, damage, 0, 0, weapon, armor, NoAttackStatus.getInstance());
+    }
+
+    public Player(String name, int blood, int damage, Weapon weapon, Armor armor, AttackStatus attackStatus) {
+        this(name, blood, damage, 0, 0, weapon, armor, attackStatus);
     }
 
     @Override
@@ -69,6 +81,11 @@ public abstract class Player implements Role {
     }
 
     @Override
+    public int getDelay() {
+        return delay;
+    }
+
+    @Override
     public Weapon getWeapon() {
         return weapon;
     }
@@ -89,6 +106,21 @@ public abstract class Player implements Role {
     }
 
     @Override
+    public boolean isReadly() {
+        return getDelay() == 0;
+    }
+
+    @Override
+    public void beDelay(int delayTimes) {
+        this.delay += delayTimes;
+    }
+
+    @Override
+    public void decreaseDelay(int delayTimes) {
+        this.delay = delayTimes > this.delay ? 0 : this.delay - delayTimes;
+    }
+
+    @Override
     public String getAttackType() {
         return Objects.equals(getWeapon().getName(), "") ? "" : format("用%s", getWeapon().getName());
     }
@@ -99,13 +131,42 @@ public abstract class Player implements Role {
     }
 
     @Override
-    public String beAttacked(Role attacker) {
-        this.blood -= blood(attacker.getDamage());
-        return format("%s%s攻击了%s%s,%s受到了%d点伤害,%s剩余生命: %d", attacker.getRoleIdentity(), attacker.getAttackType(),
-                getArmorType(), getRoleIdentity(), getName(), blood(attacker.getDamage()), getName(), getBlood());
+    public String beAttacked(Role attacker, float probability) {
+        int damage = blood(attacker.getDamage());
+        this.blood -= damage;
+        int nowBlood = this.blood;
+        String attackStatusEffect = attacker.getAttackStatus().getStatusEffect(attacker);
+        String propertyDamageEffect = probability < attacker.getWeapon().getWeaponProperty().getProbability() ? attacker.getWeapon().getWeaponProperty().getPropertyDamageEffect(this) : "";
+        String propertyDamageDetail = probability < attacker.getWeapon().getWeaponProperty().getProbability() ? attacker.getWeapon().getWeaponProperty().getPropertyDamageDetail(this) : "";
+
+        return format("%s%s攻击了%s%s,%s%s受到了%d点伤害,%s%s剩余生命: %d%s", attacker.getRoleIdentity(), attacker.getAttackType(),
+                getArmorType(), getRoleIdentity(), attackStatusEffect, getName(), damage, propertyDamageEffect,
+                getName(), nowBlood, propertyDamageDetail);
     }
 
     private int blood(int damage) {
         return damage > getDefense() ? damage - getDefense() : 0;
+    }
+
+    @Override
+    public void beAttackedByWeaponEffect(int damage) {
+        this.blood -= damage;
+    }
+
+    @Override
+    public AttackStatus getAttackStatus() {
+        return attackStatus;
+    }
+
+    @Override
+    public void setAttackStatus(AttackStatus attackStatus) {
+        this.attackStatus = attackStatus;
+        this.damage *= attackStatus.getMultiple();
+    }
+
+    @Override
+    public void cancelAttackStatus(AttackStatus status) {
+        this.attackStatus = NoAttackStatus.getInstance();
+        this.damage /= status.getMultiple();
     }
 }
