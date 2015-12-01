@@ -100,9 +100,10 @@ public abstract class Player implements Role {
 
     @Override
     public String beAttacked(Role attacker) {
-        this.blood -= blood(attacker.getDamage());
+        int damage = blood(attacker.getDamage());
+        this.blood -= damage;
         return format("%s%s攻击了%s%s,%s受到了%d点伤害,%s剩余生命: %d", attacker.getRoleIdentity(), attacker.getAttackType(),
-                getArmorType(), getRoleIdentity(), getName(), blood(attacker.getDamage()), getName(), getBlood());
+                getArmorType(), getRoleIdentity(), getName(), damage, getName(), getBlood());
     }
 
     private int blood(int damage) {
