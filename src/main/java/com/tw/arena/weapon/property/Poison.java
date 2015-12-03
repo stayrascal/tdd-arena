@@ -11,9 +11,13 @@ public class Poison extends BaseWeaponProperty {
     }
 
     @Override
-    public String getPropertyDamageDetail(Role victim) {
-        victim.beAttackedByWeaponEffect(getPropertyDamage());
-        return String.format(Constants.POISON_PROPERTY_EFFECT, victim.getName(),
-                getPropertyDamage(), victim.getName(), victim.getBlood());
+    public String getPropertyDamageDetail(Role victim, float probability) {
+        if (probability < getProbability()) {
+            victim.beAttackedByWeaponEffect(getPropertyDamage());
+            return String.format(Constants.POISON_PROPERTY_EFFECT, victim.getName(),
+                    getPropertyDamage(), victim.getName(), victim.getBlood());
+        }
+
+        return "";
     }
 }

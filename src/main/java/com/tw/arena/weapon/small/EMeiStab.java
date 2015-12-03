@@ -1,6 +1,7 @@
-package com.tw.arena.weapon;
+package com.tw.arena.weapon.small;
 
 
+import com.tw.arena.weapon.base.BaseWeapon;
 import com.tw.arena.weapon.property.WeaponProperty;
 
 public class EMeiStab extends BaseWeapon implements ShortWeapon {

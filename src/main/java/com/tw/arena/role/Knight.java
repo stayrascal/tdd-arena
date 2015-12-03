@@ -2,8 +2,8 @@ package com.tw.arena.role;
 
 import com.tw.arena.armor.Armor;
 import com.tw.arena.weapon.LongOrMiddleWeapon;
-import com.tw.arena.weapon.LongWeapon;
 import com.tw.arena.weapon.Weapon;
+import com.tw.arena.weapon.big.LongWeapon;
 
 public class Knight extends Player {
     public Knight(String name, int blood, int damage) {

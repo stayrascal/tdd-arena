@@ -1,4 +1,6 @@
-package com.tw.arena.weapon;
+package com.tw.arena.weapon.middle;
+
+import com.tw.arena.weapon.base.BaseWeapon;
 
 public class Cudgel extends BaseWeapon implements MiddleWeapon {
 

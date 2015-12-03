@@ -10,7 +10,7 @@ public class Frozen extends BaseWeaponProperty {
     }
 
     @Override
-    public String getPropertyDamageDetail(Role victim) {
-        return String.format(Constants.FROZEN_PROPERTY_EFFECT, victim.getName(), victim.getDelay() - 1);
+    public String getPropertyDamageDetail(Role victim, float probability) {
+        return getProbability() > probability ? String.format(Constants.FROZEN_PROPERTY_EFFECT, victim.getName(), victim.getDelay() - 1) : "";
     }
 }

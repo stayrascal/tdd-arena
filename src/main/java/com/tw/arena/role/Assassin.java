@@ -4,8 +4,8 @@ package com.tw.arena.role;
 import com.tw.arena.armor.Armor;
 import com.tw.arena.attack.AttackStatus;
 import com.tw.arena.weapon.ShortOrMiddleWeapon;
-import com.tw.arena.weapon.ShortWeapon;
 import com.tw.arena.weapon.Weapon;
+import com.tw.arena.weapon.small.ShortWeapon;
 
 public class Assassin extends Player {
 

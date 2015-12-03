@@ -2,8 +2,8 @@ package com.tw.arena.role;
 
 import com.tw.arena.armor.Armor;
 import com.tw.arena.attack.AttackStatus;
-import com.tw.arena.weapon.MiddleWeapon;
 import com.tw.arena.weapon.Weapon;
+import com.tw.arena.weapon.middle.MiddleWeapon;
 public class Solider extends Player {
 
     public Solider(String name, int blood, int damage, MiddleWeapon weapon) {

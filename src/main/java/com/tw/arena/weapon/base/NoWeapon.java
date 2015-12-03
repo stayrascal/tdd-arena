@@ -1,5 +1,6 @@
-package com.tw.arena.weapon;
+package com.tw.arena.weapon.base;
 
+import com.tw.arena.weapon.Weapon;
 import com.tw.arena.weapon.property.NoWeaponProperty;
 import com.tw.arena.weapon.property.WeaponProperty;
 

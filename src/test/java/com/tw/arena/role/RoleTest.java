@@ -6,10 +6,17 @@ import com.tw.arena.armor.WoodShield;
 import com.tw.arena.attack.AttackStatus;
 import com.tw.arena.attack.Fury;
 import com.tw.arena.attack.NoAttackStatus;
-import com.tw.arena.weapon.*;
+import com.tw.arena.weapon.Weapon;
+import com.tw.arena.weapon.base.NoWeapon;
+import com.tw.arena.weapon.big.Spear;
+import com.tw.arena.weapon.middle.Cudgel;
+import com.tw.arena.weapon.middle.Hammer;
+import com.tw.arena.weapon.middle.MiddleWeapon;
+import com.tw.arena.weapon.middle.PoisonSword;
 import com.tw.arena.weapon.property.Dizzy;
 import com.tw.arena.weapon.property.Poison;
 import com.tw.arena.weapon.property.WeaponProperty;
+import com.tw.arena.weapon.small.EMeiStab;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -168,8 +175,8 @@ public class RoleTest {
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(2));
         assertThat(victim.getDelay(), is(0));
         assertThat(poison.getDelayTimes(), is(0));
-        assertThat(poisonSword.getWeaponProperty().getPropertyDamageEffect(victim), is("李四中毒了,"));
-        assertThat(poisonSword.getWeaponProperty().getPropertyDamageDetail(victim), is("李四受到了2点毒性伤害,李四剩余生命: 98"));
+        assertThat(poisonSword.getWeaponProperty().getPropertyDamageEffect(victim, random.nextFloat()), is("李四中毒了,"));
+        assertThat(poisonSword.getWeaponProperty().getPropertyDamageDetail(victim, random.nextFloat()), is("李四受到了2点毒性伤害,李四剩余生命: 98"));
     }
 
     @Test
@@ -182,9 +189,9 @@ public class RoleTest {
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(0));
         assertThat(dizzy.getDelayTimes(), is(1));
         assertThat(victim.getDelay(), is(0));
-        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageEffect(victim), is("李四晕倒了,"));
+        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageEffect(victim, random.nextFloat()), is("李四晕倒了,"));
         assertThat(victim.getDelay(), is(1));
-        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageDetail(victim), is("李四晕倒了,无法攻击,眩晕还剩: 0轮"));
+        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageDetail(victim, random.nextFloat()), is("李四晕倒了,无法攻击,眩晕还剩: 0轮"));
     }
 
     @Test
@@ -197,12 +204,12 @@ public class RoleTest {
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(0));
         assertThat(dizzy.getDelayTimes(), is(1));
         assertThat(victim.getDelay(), is(0));
-        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageEffect(victim), is("李四晕倒了,"));
+        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageEffect(victim, random.nextFloat()), is("李四晕倒了,"));
         assertThat(victim.getDelay(), is(1));
-        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageDetail(victim), is("李四晕倒了,无法攻击,眩晕还剩: 0轮"));
-        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageEffect(victim), is("李四晕倒了,"));
+        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageDetail(victim, random.nextFloat()), is("李四晕倒了,无法攻击,眩晕还剩: 0轮"));
+        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageEffect(victim, random.nextFloat()), is("李四晕倒了,"));
         assertThat(victim.getDelay(), is(2));
-        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageDetail(victim), is("李四晕倒了,无法攻击,眩晕还剩: 1轮"));
+        assertThat(dizzyHammer.getWeaponProperty().getPropertyDamageDetail(victim, random.nextFloat()), is("李四晕倒了,无法攻击,眩晕还剩: 1轮"));
     }
 
     @Test

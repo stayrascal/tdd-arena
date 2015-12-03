@@ -12,7 +12,7 @@ public interface WeaponProperty {
 
     void setProbability(float probability);
 
-    String getPropertyDamageEffect(Role victim);
+    String getPropertyDamageEffect(Role victim, float probability);
 
-    String getPropertyDamageDetail(Role victim);
+    String getPropertyDamageDetail(Role victim, float probability);
 }

@@ -8,13 +8,13 @@ import com.tw.arena.attack.Fury;
 import com.tw.arena.role.Assassin;
 import com.tw.arena.role.Knight;
 import com.tw.arena.role.Role;
-import com.tw.arena.weapon.EMeiStab;
-import com.tw.arena.weapon.LongWeapon;
-import com.tw.arena.weapon.ShortWeapon;
-import com.tw.arena.weapon.Spear;
+import com.tw.arena.weapon.big.LongWeapon;
+import com.tw.arena.weapon.big.Spear;
 import com.tw.arena.weapon.property.Dizzy;
 import com.tw.arena.weapon.property.Poison;
 import com.tw.arena.weapon.property.WeaponProperty;
+import com.tw.arena.weapon.small.EMeiStab;
+import com.tw.arena.weapon.small.ShortWeapon;
 
 import java.util.Random;
 

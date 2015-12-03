@@ -11,7 +11,7 @@ public class Dizzy extends BaseWeaponProperty {
 
 
     @Override
-    public String getPropertyDamageDetail(Role victim) {
-        return String.format(Constants.DIZZY_PROPERTY_EFFECT, victim.getName(), victim.getDelay() - 1);
+    public String getPropertyDamageDetail(Role victim, float probability) {
+        return getProbability() > probability ? String.format(Constants.DIZZY_PROPERTY_EFFECT, victim.getName(), victim.getDelay() - 1) : "";
     }
 }

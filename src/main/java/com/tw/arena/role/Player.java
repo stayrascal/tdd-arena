@@ -1,11 +1,12 @@
 package com.tw.arena.role;
 
+import com.tw.arena.Constants;
 import com.tw.arena.armor.Armor;
 import com.tw.arena.armor.NoArmor;
 import com.tw.arena.attack.AttackStatus;
 import com.tw.arena.attack.NoAttackStatus;
-import com.tw.arena.weapon.NoWeapon;
 import com.tw.arena.weapon.Weapon;
+import com.tw.arena.weapon.base.NoWeapon;
 
 import java.util.Objects;
 
@@ -132,25 +133,23 @@ public abstract class Player implements Role {
 
     @Override
     public String getAttackType() {
-        return Objects.equals(getWeapon().getName(), "") ? "" : format("用%s", getWeapon().getName());
+        return Objects.equals(getWeapon().getName(), "") ? "" : format(Constants.ATTACK_TYPE, getWeapon().getName());
     }
 
     @Override
     public String getArmorType() {
-        return Objects.equals(getArmor().getName(), "") ? "" : format("装备了%s的", getArmor().getName());
+        return Objects.equals(getArmor().getName(), "") ? "" : format(Constants.ARMOR_TYPE, getArmor().getName());
     }
 
     @Override
     public String beAttacked(Role attacker, float probability) {
-        attacker.setAttackStatus(attacker.getAttackStatus(), probability);
-        int damage = blood(attacker.getDamage());
-        this.blood -= damage;
+        int damage = getDamageByAttackStatus(attacker, probability);
         int nowBlood = this.blood;
         String attackStatusEffect = attacker.getAttackStatus().getStatusEffect(attacker, probability);
-        String propertyDamageEffect = probability < attacker.getWeapon().getWeaponProperty().getProbability() ? attacker.getWeapon().getWeaponProperty().getPropertyDamageEffect(this) : "";
-        String propertyDamageDetail = probability < attacker.getWeapon().getWeaponProperty().getProbability() ? attacker.getWeapon().getWeaponProperty().getPropertyDamageDetail(this) : "";
+        String propertyDamageEffect = attacker.getWeapon().getWeaponProperty().getPropertyDamageEffect(this, probability);
+        String propertyDamageDetail = attacker.getWeapon().getWeaponProperty().getPropertyDamageDetail(this, probability);
         attacker.cancelAttackStatus(attacker.getAttackStatus(), probability);
-        return format("%s%s攻击了%s%s,%s%s受到了%d点伤害,%s%s剩余生命: %d%s",
+        return format(Constants.BATTLE_DETAIL,
                 attacker.getRoleIdentity(),
                 attacker.getAttackType(),
                 getArmorType(),
@@ -162,6 +161,13 @@ public abstract class Player implements Role {
                 getName(),
                 nowBlood,
                 propertyDamageDetail);
+    }
+
+    private int getDamageByAttackStatus(Role attacker, float probability) {
+        attacker.setAttackStatus(attacker.getAttackStatus(), probability);
+        int damage = blood(attacker.getDamage());
+        this.blood -= damage;
+        return damage;
     }
 
     private int blood(int damage) {
@@ -189,7 +195,6 @@ public abstract class Player implements Role {
     @Override
     public void cancelAttackStatus(AttackStatus attackStatus, float probability) {
         if (attackStatus.getProbability() > probability) {
-            //this.attackStatus = NoAttackStatus.getInstance();
             this.damage /= attackStatus.getMultiple();
         }
     }

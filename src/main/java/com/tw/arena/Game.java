@@ -29,6 +29,6 @@ public class Game {
             attacker = loser;
         }
 
-        printer.print(String.format("%s被打败了", loser.getName()));
+        printer.print(String.format(Constants.GAME_OVER, loser.getName()));
     }
 }

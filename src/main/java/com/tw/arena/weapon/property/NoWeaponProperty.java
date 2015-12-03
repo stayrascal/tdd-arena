@@ -33,12 +33,12 @@ public class NoWeaponProperty implements WeaponProperty {
     }
 
     @Override
-    public String getPropertyDamageEffect(Role victim) {
+    public String getPropertyDamageEffect(Role victim, float probability) {
         return "";
     }
 
     @Override
-    public String getPropertyDamageDetail(Role victim) {
+    public String getPropertyDamageDetail(Role victim, float probability) {
         return "";
     }
 }

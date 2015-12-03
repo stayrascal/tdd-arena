@@ -1,6 +1,9 @@
 package com.tw.arena.weapon;
 
 
+import com.tw.arena.weapon.base.NoWeapon;
+import com.tw.arena.weapon.middle.Cudgel;
+import com.tw.arena.weapon.middle.PoisonSword;
 import com.tw.arena.weapon.property.NoWeaponProperty;
 import com.tw.arena.weapon.property.Poison;
 import com.tw.arena.weapon.property.WeaponProperty;

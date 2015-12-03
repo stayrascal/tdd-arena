@@ -20,10 +20,10 @@ public class WeaponPropertyTest {
         assertThat(poison.getPropertyDamage(), is(5));
 
         assertThat(victim.getDelay(), is(0));
-        assertThat(poison.getPropertyDamageEffect(victim), is("张三中毒了,"));
+        assertThat(poison.getPropertyDamageEffect(victim, 0.5f), is("张三中毒了,"));
         assertThat(victim.getDelay(), is(0));
 
-        assertThat(poison.getPropertyDamageDetail(victim), is("张三受到了5点毒性伤害,张三剩余生命: 95"));
+        assertThat(poison.getPropertyDamageDetail(victim, 0.5f), is("张三受到了5点毒性伤害,张三剩余生命: 95"));
     }
 
     @Test
@@ -36,10 +36,10 @@ public class WeaponPropertyTest {
         assertThat(dizzy.getProbability(), is(0.6f));
 
         assertThat(victim.getDelay(), is(0));
-        assertThat(dizzy.getPropertyDamageEffect(victim), is("张三晕倒了,"));
+        assertThat(dizzy.getPropertyDamageEffect(victim, 0.5f), is("张三晕倒了,"));
         assertThat(victim.getDelay(), is(2));
 
-        assertThat(dizzy.getPropertyDamageDetail(victim), is("张三晕倒了,无法攻击,眩晕还剩: 1轮"));
+        assertThat(dizzy.getPropertyDamageDetail(victim, 0.5f), is("张三晕倒了,无法攻击,眩晕还剩: 1轮"));
     }
 
     @Test
@@ -52,10 +52,10 @@ public class WeaponPropertyTest {
         assertThat(frozen.getProbability(), is(0.6f));
 
         assertThat(victim.getDelay(), is(0));
-        assertThat(frozen.getPropertyDamageEffect(victim), is("张三冻僵了,"));
+        assertThat(frozen.getPropertyDamageEffect(victim, 0.5f), is("张三冻僵了,"));
         assertThat(victim.getDelay(), is(1));
 
-        assertThat(frozen.getPropertyDamageDetail(victim), is("张三冻僵了,无法攻击,冰冻还剩: 0轮"));
+        assertThat(frozen.getPropertyDamageDetail(victim, 0.5f), is("张三冻僵了,无法攻击,冰冻还剩: 0轮"));
     }
 
     @Test
@@ -66,7 +66,7 @@ public class WeaponPropertyTest {
         assertThat(noWeaponProperty.getPropertyDamage(), is(0));
         assertThat(noWeaponProperty.getProbability(), is(0f));
         assertThat(noWeaponProperty.getDelayTimes(), is(0));
-        assertThat(noWeaponProperty.getPropertyDamageEffect(victim), is(""));
-        assertThat(noWeaponProperty.getPropertyDamageDetail(victim), is(""));
+        assertThat(noWeaponProperty.getPropertyDamageEffect(victim, 0.5f), is(""));
+        assertThat(noWeaponProperty.getPropertyDamageDetail(victim, 0.5f), is(""));
     }
 }
