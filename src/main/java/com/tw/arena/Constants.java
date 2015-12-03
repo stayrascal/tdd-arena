@@ -6,5 +6,7 @@ public class Constants {
 
     public static final String DIZZY_PROPERTY_EFFECT = "%s晕倒了,无法攻击,眩晕还剩: %d轮";
 
+    public static final String FROZEN_PROPERTY_EFFECT = "%s冻僵了,无法攻击,冰冻还剩: %d轮";
+
     public static final String ATTACK_STATUS_EFFECT = "%s发动了%s,";
 }

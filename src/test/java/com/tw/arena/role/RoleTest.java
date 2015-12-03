@@ -52,7 +52,7 @@ public class RoleTest {
 
     @Test
     public void shouldGetCorrectInfoAboutSoliderEquipWeaponButWithoutArmor() {
-        Weapon weapon = new Cudgel("优质木棒", 5);
+        MiddleWeapon weapon = new Cudgel("优质木棒", 5);
         Role role = new Solider("张三", 100, 10, weapon);
 
         assertThat(role.getName(), is("张三"));
@@ -69,6 +69,7 @@ public class RoleTest {
         assertThat(role.isReadly(), is(true));
         assertThat(role.isAlive(), is(true));
     }
+
 
     @Test
     public void shouldGetCorrectInfoAboutSoliderEquipArmorButWithoutWeapon() {
@@ -92,7 +93,7 @@ public class RoleTest {
 
     @Test
     public void shouldRsturnCorrectInfoAboutRoleEquipArmorAndWeapon() {
-        Weapon weapon = new Cudgel("优质木棒", 5);
+        MiddleWeapon weapon = new Cudgel("优质木棒", 5);
         Armor armor = new WoodShield("木盾", 5);
         Role role = new Solider("张三", 100, 10, weapon, armor);
 
@@ -127,7 +128,7 @@ public class RoleTest {
 
     @Test
     public void shoudReturnDetailAboutZhangSanAttackLiSi() {
-        Weapon weapon = new Cudgel("优质木棒", 5);
+        MiddleWeapon weapon = new Cudgel("优质木棒", 5);
         Role solider = new Solider("张三", 100, 3, weapon);
         Role normal = new Normal("李四", 20, 2);
 
@@ -160,7 +161,7 @@ public class RoleTest {
     @Test
     public void shoudReturnWeaponInfoOfPlayerWhoEquipPoisonSword() {
         WeaponProperty poison = new Poison(2, 0, 0.6f, "中毒了");
-        Weapon poisonSword = new PoisonSword("优质毒剑", 10, poison);
+        MiddleWeapon poisonSword = new PoisonSword("优质毒剑", 10, poison);
         Role solider = new Solider("张三", 100, 10, poisonSword);
         Role victim = new Normal("李四", 100, 5);
 
@@ -174,7 +175,7 @@ public class RoleTest {
     @Test
     public void shoudReturnWeaponInfoOfPlayerWhoEquipHammer() {
         WeaponProperty dizzy = new Dizzy(0, 1, 0.6f, "晕倒了");
-        Weapon dizzyHammer = new Hammer("晕锤", 10, dizzy);
+        MiddleWeapon dizzyHammer = new Hammer("晕锤", 10, dizzy);
         Role solider = new Solider("张三", 100, 10, dizzyHammer);
         Role victim = new Normal("李四", 100, 5);
 
@@ -189,7 +190,7 @@ public class RoleTest {
     @Test
     public void shouldReturnCorrectInfoWhenUseHammerAttackTwoTimes() {
         WeaponProperty dizzy = new Dizzy(0, 1, 0.6f, "晕倒了");
-        Weapon dizzyHammer = new Hammer("晕锤", 10, dizzy);
+        MiddleWeapon dizzyHammer = new Hammer("晕锤", 10, dizzy);
         Role solider = new Solider("张三", 100, 10, dizzyHammer);
         Role victim = new Normal("李四", 100, 5);
 
@@ -229,7 +230,6 @@ public class RoleTest {
         assertThat(solider.getDamage(), is(30));
 
         solider.cancelAttackStatus(fury, random.nextFloat());
-        assertThat(solider.getAttackStatus(), is(NoAttackStatus.getInstance()));
         assertThat(solider.getDamage(), is(10));
     }
 
@@ -241,5 +241,95 @@ public class RoleTest {
 
         assertThat(solider.getBlood(), is(90));
     }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldReturnRunTimeExceptionWhenNormalEquipWeapon() {
+        Role normal = new Normal("张三", 100, 10);
+        Weapon weapon = new Cudgel("优质木棒", 5);
+
+        normal.setWeapon(weapon);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldReturnRunTimeExceptionWhenNormalEquipArmor() {
+        Role normal = new Normal("张三", 100, 10);
+        Armor woodShield = new WoodShield("木盾", 10);
+
+        normal.setArmor(woodShield);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldReturnRunTimeExceptionWhenAssassinEquipLongWeapon() {
+        Role assassin = new Assassin("刺客", 100, 10);
+        Weapon spear = new Spear("长枪", 20);
+
+        assassin.setWeapon(spear);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldReturnRunTimeExceptionWhenSoliderEquipLongWeapon() {
+        Role solider = new Solider("张三", 100, 10);
+        Weapon spear = new Spear("长枪", 20);
+
+        solider.setWeapon(spear);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldReturnRunTimeExceptionWhenSoliderEquipShortWeapon() {
+        Role solider = new Solider("张三", 100, 10);
+        Weapon eMeiStab = new EMeiStab("峨眉刺", 12);
+
+        solider.setWeapon(eMeiStab);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldReturnRunTimeExceptionWhenKnightEquipShortWeapon() {
+        Role knight = new Knight("张三", 100, 10);
+        Weapon eMeiStab = new EMeiStab("峨眉刺", 12);
+
+        knight.setWeapon(eMeiStab);
+    }
+
+    @Test
+    public void theProbabilityOfWeaponPropertyshouldBe0WhenAssassinEquipMiddleWeapon() {
+        Role assassin = new Assassin("刺客", 100, 10);
+        WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
+        Weapon poisonSword = new PoisonSword("毒剑", 10, poison);
+        assassin.setWeapon(poisonSword);
+
+        assertThat(assassin.getWeapon().getWeaponProperty().getProbability(), is(0f));
+    }
+
+    @Test
+    public void theProbabilityOfWeaponPropertyshouldBeRightWhenAssassinEquipShortWeapon() {
+        Role assassin = new Assassin("刺客", 100, 10);
+        WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
+        Weapon eMeiStab = new EMeiStab("峨眉刺", 12, poison);
+        assassin.setWeapon(eMeiStab);
+
+        assertThat(assassin.getWeapon().getWeaponProperty().getProbability(), is(0.6f));
+    }
+
+    @Test
+    public void theProbabilityOfWeaponPropertyshouldBe0WhenKnightEquipMiddleWeapon() {
+        Role knight = new Knight("骑士", 100, 10);
+        WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
+        Weapon poisonSword = new PoisonSword("毒剑", 10, poison);
+        knight.setWeapon(poisonSword);
+
+        assertThat(knight.getWeapon().getWeaponProperty().getProbability(), is(0f));
+    }
+
+    @Test
+    public void theProbabilityOfWeaponPropertyshouldBeRightWhenKnightEquipLongWeapon() {
+        Role knight = new Knight("骑士", 100, 10);
+        WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
+        Weapon spear = new Spear("毒枪", 10, poison);
+        knight.setWeapon(spear);
+
+        assertThat(knight.getWeapon().getWeaponProperty().getProbability(), is(0.6f));
+    }
+
+
 
 }

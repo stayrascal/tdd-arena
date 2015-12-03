@@ -45,6 +45,11 @@ public abstract class BaseWeaponProperty implements WeaponProperty {
     }
 
     @Override
+    public void setProbability(float probability) {
+        this.probability = probability;
+    }
+
+    @Override
     public String getPropertyDamageEffect(Role victim) {
         victim.beDelay(getDelayTimes());
         return victim.getName() + propertyDamageEffect + ",";

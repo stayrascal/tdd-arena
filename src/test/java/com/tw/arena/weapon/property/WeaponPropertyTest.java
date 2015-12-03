@@ -43,6 +43,22 @@ public class WeaponPropertyTest {
     }
 
     @Test
+    public void shouldReturnCorrectInfoAboutFrozen() {
+        WeaponProperty frozen = new Frozen(0, 1, 0.6f, "冻僵了");
+        Role victim = new Solider("张三", 100, 10);
+
+        assertThat(frozen.getDelayTimes(), is(1));
+        assertThat(frozen.getPropertyDamage(), is(0));
+        assertThat(frozen.getProbability(), is(0.6f));
+
+        assertThat(victim.getDelay(), is(0));
+        assertThat(frozen.getPropertyDamageEffect(victim), is("张三冻僵了,"));
+        assertThat(victim.getDelay(), is(1));
+
+        assertThat(frozen.getPropertyDamageDetail(victim), is("张三冻僵了,无法攻击,冰冻还剩: 0轮"));
+    }
+
+    @Test
     public void shouldReturnCorrectInfoAboutNoWeaponProperty() {
         WeaponProperty noWeaponProperty = NoWeaponProperty.getInstance();
         Role victim = new Solider("张三", 100, 10);

@@ -91,8 +91,18 @@ public abstract class Player implements Role {
     }
 
     @Override
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    @Override
     public Armor getArmor() {
         return armor;
+    }
+
+    @Override
+    public void setArmor(Armor armor) {
+        this.armor = armor;
     }
 
     @Override

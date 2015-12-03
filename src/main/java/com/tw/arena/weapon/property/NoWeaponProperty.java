@@ -29,6 +29,10 @@ public class NoWeaponProperty implements WeaponProperty {
     }
 
     @Override
+    public void setProbability(float probability) {
+    }
+
+    @Override
     public String getPropertyDamageEffect(Role victim) {
         return "";
     }

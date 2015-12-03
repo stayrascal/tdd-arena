@@ -18,7 +18,11 @@ public interface Role {
 
     Weapon getWeapon();
 
+    void setWeapon(Weapon weapon);
+
     Armor getArmor();
+
+    void setArmor(Armor armor);
 
     AttackStatus getAttackStatus();
 

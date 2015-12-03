@@ -31,6 +31,15 @@ public class WeaponTest {
     }
 
     @Test
+    public void shouldReturnCorrectInfoAboutEMeiStab() {
+        Weapon weapon = new Cudgel("峨眉刺", 5);
+
+        assertThat(weapon.getName(), is("峨眉刺"));
+        assertThat(weapon.getDamage(), is(5));
+        assertThat(weapon.getWeaponProperty(), is(NoWeaponProperty.getInstance()));
+    }
+
+    @Test
     public void shouldReturnCorrectInfoAboutNoWeapon() {
         Weapon noWeapon = NoWeapon.getInstance();
 

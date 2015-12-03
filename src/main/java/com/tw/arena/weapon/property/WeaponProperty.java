@@ -2,12 +2,6 @@ package com.tw.arena.weapon.property;
 
 import com.tw.arena.role.Role;
 
-/**
- * Date: 2015/12/1
- * Time: 9:31
- *
- * @author Rascal
- */
 public interface WeaponProperty {
 
     int getPropertyDamage();
@@ -15,6 +9,8 @@ public interface WeaponProperty {
     int getDelayTimes();
 
     float getProbability();
+
+    void setProbability(float probability);
 
     String getPropertyDamageEffect(Role victim);
 

@@ -2,17 +2,11 @@ package com.tw.arena.role;
 
 import com.tw.arena.armor.Armor;
 import com.tw.arena.attack.AttackStatus;
+import com.tw.arena.weapon.MiddleWeapon;
 import com.tw.arena.weapon.Weapon;
-
-/**
- * Date: 2015/11/29
- * Time: 18:08
- *
- * @author Rascal
- */
 public class Solider extends Player {
 
-    public Solider(String name, int blood, int damage, Weapon weapon) {
+    public Solider(String name, int blood, int damage, MiddleWeapon weapon) {
         super(name, blood, damage, weapon);
     }
 
@@ -20,7 +14,7 @@ public class Solider extends Player {
         super(name, blood, damage);
     }
 
-    public Solider(String name, int bllod, int damage, Weapon weapon, Armor armor) {
+    public Solider(String name, int bllod, int damage, MiddleWeapon weapon, Armor armor) {
         super(name, bllod, damage, weapon, armor);
     }
 
@@ -28,7 +22,7 @@ public class Solider extends Player {
         super(name, blood, damage, armor);
     }
 
-    public Solider(String name, int blood, int damage, Weapon weapon, Armor armor, AttackStatus attackStatus) {
+    public Solider(String name, int blood, int damage, MiddleWeapon weapon, Armor armor, AttackStatus attackStatus) {
         super(name, blood, damage, weapon, armor, attackStatus);
     }
 
@@ -36,5 +30,14 @@ public class Solider extends Player {
     @Override
     public String getRoleType() {
         return "战士";
+    }
+
+    @Override
+    public void setWeapon(Weapon weapon) {
+        if (!(weapon instanceof MiddleWeapon)) {
+            throw new RuntimeException("战士不能装备非中武器");
+        }
+
+        super.setWeapon(weapon);
     }
 }
