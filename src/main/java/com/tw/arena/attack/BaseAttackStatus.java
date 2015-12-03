@@ -32,7 +32,7 @@ public abstract class BaseAttackStatus implements AttackStatus {
     }
 
     @Override
-    public String getStatusEffect(Role attacker) {
-        return String.format(Constants.ATTACK_STATUS_EFFECT, attacker.getName(), getDescribe());
+    public String getStatusEffect(Role attacker, float probability) {
+        return probability < getProbability() ? String.format(Constants.ATTACK_STATUS_EFFECT, attacker.getName(), getDescribe()) : "";
     }
 }

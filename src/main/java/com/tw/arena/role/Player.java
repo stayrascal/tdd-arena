@@ -32,7 +32,7 @@ public abstract class Player implements Role {
     private Player(String name, int blood, int damage, int defense, int delay, Weapon weapon, Armor armor, AttackStatus attackStatus) {
         this.name = name;
         this.blood = blood;
-        this.damage = (damage + weapon.getDamage()) * attackStatus.getMultiple();
+        this.damage = damage + weapon.getDamage();
         this.defense = defense + armor.getDefense();
         this.delay = delay;
         this.weapon = weapon;
@@ -132,16 +132,26 @@ public abstract class Player implements Role {
 
     @Override
     public String beAttacked(Role attacker, float probability) {
+        attacker.setAttackStatus(attacker.getAttackStatus(), probability);
         int damage = blood(attacker.getDamage());
         this.blood -= damage;
         int nowBlood = this.blood;
-        String attackStatusEffect = attacker.getAttackStatus().getStatusEffect(attacker);
+        String attackStatusEffect = attacker.getAttackStatus().getStatusEffect(attacker, probability);
         String propertyDamageEffect = probability < attacker.getWeapon().getWeaponProperty().getProbability() ? attacker.getWeapon().getWeaponProperty().getPropertyDamageEffect(this) : "";
         String propertyDamageDetail = probability < attacker.getWeapon().getWeaponProperty().getProbability() ? attacker.getWeapon().getWeaponProperty().getPropertyDamageDetail(this) : "";
-
-        return format("%s%s攻击了%s%s,%s%s受到了%d点伤害,%s%s剩余生命: %d%s", attacker.getRoleIdentity(), attacker.getAttackType(),
-                getArmorType(), getRoleIdentity(), attackStatusEffect, getName(), damage, propertyDamageEffect,
-                getName(), nowBlood, propertyDamageDetail);
+        attacker.cancelAttackStatus(attacker.getAttackStatus(), probability);
+        return format("%s%s攻击了%s%s,%s%s受到了%d点伤害,%s%s剩余生命: %d%s",
+                attacker.getRoleIdentity(),
+                attacker.getAttackType(),
+                getArmorType(),
+                getRoleIdentity(),
+                attackStatusEffect,
+                getName(),
+                damage,
+                propertyDamageEffect,
+                getName(),
+                nowBlood,
+                propertyDamageDetail);
     }
 
     private int blood(int damage) {
@@ -159,14 +169,18 @@ public abstract class Player implements Role {
     }
 
     @Override
-    public void setAttackStatus(AttackStatus attackStatus) {
-        this.attackStatus = attackStatus;
-        this.damage *= attackStatus.getMultiple();
+    public void setAttackStatus(AttackStatus attackStatus, float probability) {
+        if (attackStatus.getProbability() > probability) {
+            this.attackStatus = attackStatus;
+            this.damage *= attackStatus.getMultiple();
+        }
     }
 
     @Override
-    public void cancelAttackStatus(AttackStatus status) {
-        this.attackStatus = NoAttackStatus.getInstance();
-        this.damage /= status.getMultiple();
+    public void cancelAttackStatus(AttackStatus attackStatus, float probability) {
+        if (attackStatus.getProbability() > probability) {
+            //this.attackStatus = NoAttackStatus.getInstance();
+            this.damage /= attackStatus.getMultiple();
+        }
     }
 }

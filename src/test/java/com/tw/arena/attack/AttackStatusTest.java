@@ -18,7 +18,7 @@ public class AttackStatusTest {
         assertThat(fury.getDescribe(), is("全力一击"));
         assertThat(fury.getMultiple(), is(3));
         assertThat(fury.getProbability(), is(0.6f));
-        assertThat(fury.getStatusEffect(solider), is("张三发动了全力一击,"));
+        assertThat(fury.getStatusEffect(solider, 0.5f), is("张三发动了全力一击,"));
     }
 
     @Test
@@ -29,6 +29,6 @@ public class AttackStatusTest {
         assertThat(noAttackStatus.getProbability(), is(0f));
         assertThat(noAttackStatus.getDescribe(), is(""));
         assertThat(noAttackStatus.getMultiple(), is(1));
-        assertThat(noAttackStatus.getStatusEffect(solider), is(""));
+        assertThat(noAttackStatus.getStatusEffect(solider, 0.5f), is(""));
     }
 }

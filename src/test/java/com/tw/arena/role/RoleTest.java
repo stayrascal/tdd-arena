@@ -147,6 +147,17 @@ public class RoleTest {
     }
 
     @Test
+    public void shouldReturnCorrectDamageWhenDamageMoreThanDefense() {
+        Armor armor = new WoodShield("木盾", 5);
+        Role solider = new Solider("张三", 100, 3, armor);
+        Role normal = new Normal("李四", 20, 7);
+
+        String detail = solider.beAttacked(normal, random.nextFloat());
+
+        assertThat(detail, is("普通人李四攻击了装备了木盾的战士张三,张三受到了2点伤害,张三剩余生命: 98"));
+    }
+
+    @Test
     public void shoudReturnWeaponInfoOfPlayerWhoEquipPoisonSword() {
         WeaponProperty poison = new Poison(2, 0, 0.6f, "中毒了");
         Weapon poisonSword = new PoisonSword("优质毒剑", 10, poison);
@@ -212,12 +223,12 @@ public class RoleTest {
 
         assertThat(solider.getAttackStatus(), is(NoAttackStatus.getInstance()));
 
-        solider.setAttackStatus(fury);
+        solider.setAttackStatus(fury, random.nextFloat());
 
         assertThat(solider.getAttackStatus(), is(fury));
         assertThat(solider.getDamage(), is(30));
 
-        solider.cancelAttackStatus(fury);
+        solider.cancelAttackStatus(fury, random.nextFloat());
         assertThat(solider.getAttackStatus(), is(NoAttackStatus.getInstance()));
         assertThat(solider.getDamage(), is(10));
     }

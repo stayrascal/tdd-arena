@@ -11,5 +11,5 @@ public interface AttackStatus {
 
     float getProbability();
 
-    String getStatusEffect(Role attacker);
+    String getStatusEffect(Role attacker, float probability);
 }

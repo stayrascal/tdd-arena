@@ -22,7 +22,7 @@ public interface Role {
 
     AttackStatus getAttackStatus();
 
-    void setAttackStatus(AttackStatus status);
+    void setAttackStatus(AttackStatus status, float probability);
 
     String getRoleType();
 
@@ -44,7 +44,7 @@ public interface Role {
 
     void decreaseDelay(int delayTimes);
 
-    void cancelAttackStatus(AttackStatus status);
+    void cancelAttackStatus(AttackStatus status, float probability);
 
 
 }

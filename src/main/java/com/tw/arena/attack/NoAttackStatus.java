@@ -30,7 +30,7 @@ public class NoAttackStatus implements AttackStatus {
     }
 
     @Override
-    public String getStatusEffect(Role attacker) {
+    public String getStatusEffect(Role attacker, float probability) {
         return "";
     }
 }
