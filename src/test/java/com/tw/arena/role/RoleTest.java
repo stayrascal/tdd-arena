@@ -229,7 +229,6 @@ public class RoleTest {
         assertThat(solider.getDamage(), is(30));
 
         solider.cancelAttackStatus(fury, random.nextFloat());
-        assertThat(solider.getAttackStatus(), is(NoAttackStatus.getInstance()));
         assertThat(solider.getDamage(), is(10));
     }
 
