@@ -40,95 +40,92 @@ public class RoleTest {
 
     @Test
     public void shoudReturnCorrectBasicInfoAboutNormal() {
-        Role role = new Normal("张三", 100, 5);
+        Normal normal = new Normal("张三", 100, 5);
 
-        assertThat(role.getName(), is("张三"));
-        assertThat(role.getBlood(), is(100));
-        assertThat(role.getDamage(), is(5));
-        assertThat(role.getDefense(), is(0));
-        assertThat(role.getDelay(), is(0));
-        assertThat(role.getWeapon(), is(NoWeapon.getInstance()));
-        assertThat(role.getArmor(), is(NoArmor.getInstance()));
-        assertThat(role.getAttackStatus(), is(NoAttackStatus.getInstance()));
-        assertThat(role.getRoleType(), is("普通人"));
-        assertThat(role.getRoleIdentity(), is("普通人张三"));
-        assertThat(role.getAttackType(), is(""));
-        assertThat(role.isAlive(), is(true));
-        assertThat(role.isReadly(), is(true));
+        assertThat(normal.getName(), is("张三"));
+        assertThat(normal.getBlood(), is(100));
+        assertThat(normal.getDamage(), is(5));
+        assertThat(normal.getDefense(), is(0));
+        assertThat(normal.getDelay(), is(0));
+        assertThat(normal.getRoleType(), is("普通人"));
+        assertThat(normal.getRoleIdentity(), is("普通人张三"));
+        assertThat(normal.getAttackType(), is(""));
+        assertThat(normal.isAlive(), is(true));
+        assertThat(normal.isReadly(), is(true));
     }
 
     @Test
     public void shouldGetCorrectInfoAboutSoliderEquipWeaponButWithoutArmor() {
         MiddleWeapon weapon = new Cudgel("优质木棒", 5);
-        Role role = new Solider("张三", 100, 10, weapon);
+        Solider solider = new Solider("张三", 100, 10, weapon);
 
-        assertThat(role.getName(), is("张三"));
-        assertThat(role.getBlood(), is(100));
-        assertThat(role.getDamage(), is(15));
-        assertThat(role.getDefense(), is(0));
-        assertThat(role.getDelay(), is(0));
-        assertThat(role.getWeapon(), is(weapon));
-        assertThat(role.getAttackStatus(), is(NoAttackStatus.getInstance()));
-        assertThat(role.getRoleType(), is("战士"));
-        assertThat(role.getRoleIdentity(), is("战士张三"));
-        assertThat(role.getAttackType(), is("用优质木棒"));
-        assertThat(role.getArmor(), is(NoArmor.getInstance()));
-        assertThat(role.isReadly(), is(true));
-        assertThat(role.isAlive(), is(true));
+        assertThat(solider.getName(), is("张三"));
+        assertThat(solider.getBlood(), is(100));
+        assertThat(solider.getDamage(), is(15));
+        assertThat(solider.getDefense(), is(0));
+        assertThat(solider.getDelay(), is(0));
+        assertThat(solider.getWeapon(), is(weapon));
+        assertThat(solider.getAttackStatus(), is(NoAttackStatus.getInstance()));
+        assertThat(solider.getRoleType(), is("战士"));
+        assertThat(solider.getRoleIdentity(), is("战士张三"));
+        assertThat(solider.getAttackType(), is("用优质木棒"));
+        assertThat(solider.getArmor(), is(NoArmor.getInstance()));
+        assertThat(solider.isReadly(), is(true));
+        assertThat(solider.isAlive(), is(true));
     }
 
 
     @Test
     public void shouldGetCorrectInfoAboutSoliderEquipArmorButWithoutWeapon() {
         Armor armor = new WoodShield("木盾", 5);
-        Role role = new Solider("张三", 100, 10, armor);
+        Solider solider = new Solider("张三", 100, 10, armor);
 
-        assertThat(role.getName(), is("张三"));
-        assertThat(role.getBlood(), is(100));
-        assertThat(role.getDamage(), is(10));
-        assertThat(role.getDefense(), is(5));
-        assertThat(role.getDelay(), is(0));
-        assertThat(role.getWeapon(), is(NoWeapon.getInstance()));
-        assertThat(role.getAttackStatus(), is(NoAttackStatus.getInstance()));
-        assertThat(role.getRoleType(), is("战士"));
-        assertThat(role.getRoleIdentity(), is("战士张三"));
-        assertThat(role.getAttackType(), is(""));
-        assertThat(role.getArmor(), is(armor));
-        assertThat(role.isAlive(), is(true));
-        assertThat(role.isReadly(), is(true));
+        assertThat(solider.getName(), is("张三"));
+        assertThat(solider.getBlood(), is(100));
+        assertThat(solider.getDamage(), is(10));
+        assertThat(solider.getDefense(), is(5));
+        assertThat(solider.getDelay(), is(0));
+        assertThat(solider.getWeapon(), is(NoWeapon.getInstance()));
+        assertThat(solider.getAttackStatus(), is(NoAttackStatus.getInstance()));
+        assertThat(solider.getRoleType(), is("战士"));
+        assertThat(solider.getRoleIdentity(), is("战士张三"));
+        assertThat(solider.getAttackType(), is(""));
+        assertThat(solider.getArmor(), is(armor));
+        assertThat(solider.isAlive(), is(true));
+        assertThat(solider.isReadly(), is(true));
     }
 
     @Test
     public void shouldRsturnCorrectInfoAboutRoleEquipArmorAndWeapon() {
         MiddleWeapon weapon = new Cudgel("优质木棒", 5);
         Armor armor = new WoodShield("木盾", 5);
-        Role role = new Solider("张三", 100, 10, weapon, armor);
+        Solider solider = new Solider("张三", 100, 10, weapon, armor);
 
-        assertThat(role.getName(), is("张三"));
-        assertThat(role.getBlood(), is(100));
-        assertThat(role.getDamage(), is(15));
-        assertThat(role.getDefense(), is(5));
-        assertThat(role.getDelay(), is(0));
-        assertThat(role.getWeapon(), is(weapon));
-        assertThat(role.getAttackStatus(), is(NoAttackStatus.getInstance()));
-        assertThat(role.getRoleType(), is("战士"));
-        assertThat(role.getRoleIdentity(), is("战士张三"));
-        assertThat(role.getAttackType(), is("用优质木棒"));
-        assertThat(role.getArmor(), is(armor));
-        assertThat(role.isAlive(), is(true));
-        assertThat(role.isReadly(), is(true));
+        assertThat(solider.getName(), is("张三"));
+        assertThat(solider.getBlood(), is(100));
+        assertThat(solider.getDamage(), is(15));
+        assertThat(solider.getDefense(), is(5));
+        assertThat(solider.getDelay(), is(0));
+        assertThat(solider.getWeapon(), is(weapon));
+        assertThat(solider.getAttackStatus(), is(NoAttackStatus.getInstance()));
+        assertThat(solider.getRoleType(), is("战士"));
+        assertThat(solider.getRoleIdentity(), is("战士张三"));
+        assertThat(solider.getAttackType(), is("用优质木棒"));
+        assertThat(solider.getArmor(), is(armor));
+        assertThat(solider.isAlive(), is(true));
+        assertThat(solider.isReadly(), is(true));
     }
 
     @Test
     public void shouldReturnFalseWhenBloodisLessThan0() {
-        Role solider = new Solider("张三", -1, 10);
+        Solider solider = new Solider("张三", -1, 10);
 
         assertThat(solider.isAlive(), is(false));
     }
 
     @Test
     public void shouldReturnTrueWhenBloodIs0(){
-        Role solder = new Solider("张三", 0, 10);
+        Solider solder = new Solider("张三", 0, 10);
 
         assertThat(solder.isAlive(), is(true));
     }
@@ -136,8 +133,8 @@ public class RoleTest {
     @Test
     public void shoudReturnDetailAboutZhangSanAttackLiSi() {
         MiddleWeapon weapon = new Cudgel("优质木棒", 5);
-        Role solider = new Solider("张三", 100, 3, weapon);
-        Role normal = new Normal("李四", 20, 2);
+        Solider solider = new Solider("张三", 100, 3, weapon);
+        Normal normal = new Normal("李四", 20, 2);
 
         String detail = normal.beAttacked(solider, random.nextFloat());
         assertThat(detail, is("战士张三用优质木棒攻击了普通人李四,李四受到了8点伤害,李四剩余生命: 12"));
@@ -146,8 +143,8 @@ public class RoleTest {
     @Test
     public void shouldReturn0WhenDamageLessThanDefense() {
         Armor armor = new WoodShield("木盾", 5);
-        Role solider = new Solider("张三", 100, 3, armor);
-        Role normal = new Normal("李四", 20, 2);
+        Solider solider = new Solider("张三", 100, 3, armor);
+        Normal normal = new Normal("李四", 20, 2);
 
         String detail = solider.beAttacked(normal, random.nextFloat());
 
@@ -157,8 +154,8 @@ public class RoleTest {
     @Test
     public void shouldReturnCorrectDamageWhenDamageMoreThanDefense() {
         Armor armor = new WoodShield("木盾", 5);
-        Role solider = new Solider("张三", 100, 3, armor);
-        Role normal = new Normal("李四", 20, 7);
+        Solider solider = new Solider("张三", 100, 3, armor);
+        Normal normal = new Normal("李四", 20, 7);
 
         String detail = solider.beAttacked(normal, random.nextFloat());
 
@@ -169,8 +166,8 @@ public class RoleTest {
     public void shoudReturnWeaponInfoOfPlayerWhoEquipPoisonSword() {
         WeaponProperty poison = new Poison(2, 0, 0.6f, "中毒了");
         MiddleWeapon poisonSword = new PoisonSword("优质毒剑", 10, poison);
-        Role solider = new Solider("张三", 100, 10, poisonSword);
-        Role victim = new Normal("李四", 100, 5);
+        Solider solider = new Solider("张三", 100, 10, poisonSword);
+        Normal victim = new Normal("李四", 100, 5);
 
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(2));
         assertThat(victim.getDelay(), is(0));
@@ -183,8 +180,8 @@ public class RoleTest {
     public void shoudReturnWeaponInfoOfPlayerWhoEquipHammer() {
         WeaponProperty dizzy = new Dizzy(0, 1, 0.6f, "晕倒了");
         MiddleWeapon dizzyHammer = new Hammer("晕锤", 10, dizzy);
-        Role solider = new Solider("张三", 100, 10, dizzyHammer);
-        Role victim = new Normal("李四", 100, 5);
+        Solider solider = new Solider("张三", 100, 10, dizzyHammer);
+        Normal victim = new Normal("李四", 100, 5);
 
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(0));
         assertThat(dizzy.getDelayTimes(), is(1));
@@ -198,8 +195,8 @@ public class RoleTest {
     public void shouldReturnCorrectInfoWhenUseHammerAttackTwoTimes() {
         WeaponProperty dizzy = new Dizzy(0, 1, 0.6f, "晕倒了");
         MiddleWeapon dizzyHammer = new Hammer("晕锤", 10, dizzy);
-        Role solider = new Solider("张三", 100, 10, dizzyHammer);
-        Role victim = new Normal("李四", 100, 5);
+        Solider solider = new Solider("张三", 100, 10, dizzyHammer);
+        Normal victim = new Normal("李四", 100, 5);
 
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(0));
         assertThat(dizzy.getDelayTimes(), is(1));
@@ -214,7 +211,7 @@ public class RoleTest {
 
     @Test
     public void theDelayOfPlayerShouldBeRightAfterBeDelayedOrDecreaseDelay() {
-        Role normal = new Normal("张三", 100, 10);
+        Normal normal = new Normal("张三", 100, 10);
         normal.beDelay(1);
 
         assertThat(normal.getDelay(), is(1));
@@ -226,7 +223,7 @@ public class RoleTest {
 
     @Test
     public void shouldReturnCorrectInfoWhenSoliderWithFuryStatus() {
-        Role solider = new Solider("张三", 100, 10);
+        Solider solider = new Solider("张三", 100, 10);
         AttackStatus fury = new Fury("全力一击", 3, 0.6f);
 
         assertThat(solider.getAttackStatus(), is(NoAttackStatus.getInstance()));
@@ -242,7 +239,7 @@ public class RoleTest {
 
     @Test
     public void shouldLostBloodWhenDamageByWeaponEffect() {
-        Role solider = new Solider("张三", 100, 10);
+        Solider solider = new Solider("张三", 100, 10);
 
         solider.beAttackedByWeaponEffect(10);
 
@@ -251,7 +248,7 @@ public class RoleTest {
 
     @Test(expected = RuntimeException.class)
     public void shouldReturnRunTimeExceptionWhenNormalEquipWeapon() {
-        Role normal = new Normal("张三", 100, 10);
+        Normal normal = new Normal("张三", 100, 10);
         Weapon weapon = new Cudgel("优质木棒", 5);
 
         normal.setWeapon(weapon);
@@ -259,7 +256,7 @@ public class RoleTest {
 
     @Test(expected = RuntimeException.class)
     public void shouldReturnRunTimeExceptionWhenNormalEquipArmor() {
-        Role normal = new Normal("张三", 100, 10);
+        Normal normal = new Normal("张三", 100, 10);
         Armor woodShield = new WoodShield("木盾", 10);
 
         normal.setArmor(woodShield);
@@ -267,7 +264,7 @@ public class RoleTest {
 
     @Test(expected = RuntimeException.class)
     public void shouldReturnRunTimeExceptionWhenAssassinEquipLongWeapon() {
-        Role assassin = new Assassin("刺客", 100, 10);
+        Assassin assassin = new Assassin("刺客", 100, 10);
         Weapon spear = new Spear("长枪", 20);
 
         assassin.setWeapon(spear);
@@ -275,7 +272,7 @@ public class RoleTest {
 
     @Test(expected = RuntimeException.class)
     public void shouldReturnRunTimeExceptionWhenSoliderEquipLongWeapon() {
-        Role solider = new Solider("张三", 100, 10);
+        Solider solider = new Solider("张三", 100, 10);
         Weapon spear = new Spear("长枪", 20);
 
         solider.setWeapon(spear);
@@ -283,7 +280,7 @@ public class RoleTest {
 
     @Test(expected = RuntimeException.class)
     public void shouldReturnRunTimeExceptionWhenSoliderEquipShortWeapon() {
-        Role solider = new Solider("张三", 100, 10);
+        Solider solider = new Solider("张三", 100, 10);
         Weapon eMeiStab = new EMeiStab("峨眉刺", 12);
 
         solider.setWeapon(eMeiStab);
@@ -291,7 +288,7 @@ public class RoleTest {
 
     @Test(expected = RuntimeException.class)
     public void shouldReturnRunTimeExceptionWhenKnightEquipShortWeapon() {
-        Role knight = new Knight("张三", 100, 10);
+        Knight knight = new Knight("张三", 100, 10);
         Weapon eMeiStab = new EMeiStab("峨眉刺", 12);
 
         knight.setWeapon(eMeiStab);
@@ -299,7 +296,7 @@ public class RoleTest {
 
     @Test
     public void theProbabilityOfWeaponPropertyshouldBe0WhenAssassinEquipMiddleWeapon() {
-        Role assassin = new Assassin("刺客", 100, 10);
+        Assassin assassin = new Assassin("刺客", 100, 10);
         WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
         Weapon poisonSword = new PoisonSword("毒剑", 10, poison);
         assassin.setWeapon(poisonSword);
@@ -309,7 +306,7 @@ public class RoleTest {
 
     @Test
     public void theProbabilityOfWeaponPropertyshouldBeRightWhenAssassinEquipShortWeapon() {
-        Role assassin = new Assassin("刺客", 100, 10);
+        Assassin assassin = new Assassin("刺客", 100, 10);
         WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
         Weapon eMeiStab = new EMeiStab("峨眉刺", 12, poison);
         assassin.setWeapon(eMeiStab);
@@ -319,7 +316,7 @@ public class RoleTest {
 
     @Test
     public void theProbabilityOfWeaponPropertyshouldBe0WhenKnightEquipMiddleWeapon() {
-        Role knight = new Knight("骑士", 100, 10);
+        Knight knight = new Knight("骑士", 100, 10);
         WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
         Weapon poisonSword = new PoisonSword("毒剑", 10, poison);
         knight.setWeapon(poisonSword);
@@ -329,7 +326,7 @@ public class RoleTest {
 
     @Test
     public void theProbabilityOfWeaponPropertyshouldBeRightWhenKnightEquipLongWeapon() {
-        Role knight = new Knight("骑士", 100, 10);
+        Knight knight = new Knight("骑士", 100, 10);
         WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
         Weapon spear = new Spear("毒枪", 10, poison);
         knight.setWeapon(spear);

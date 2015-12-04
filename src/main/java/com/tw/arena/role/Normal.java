@@ -1,7 +1,9 @@
 package com.tw.arena.role;
 
 import com.tw.arena.armor.Armor;
+import com.tw.arena.armor.NoArmor;
 import com.tw.arena.weapon.Weapon;
+import com.tw.arena.weapon.base.NoWeapon;
 
 
 public class Normal extends Player {
@@ -16,11 +18,13 @@ public class Normal extends Player {
 
     @Override
     public void setWeapon(Weapon weapon) {
-        throw new RuntimeException("普通人不能装备武器");
+        super.setWeapon(NoWeapon.getInstance());
+        //throw new RuntimeException("普通人不能装备武器");
     }
 
     @Override
     public void setArmor(Armor armor) {
-        throw new RuntimeException("普通人不能装备防具");
+        super.setArmor(NoArmor.getInstance());
+        //throw new RuntimeException("普通人不能装备防具");
     }
 }

@@ -7,7 +7,6 @@ import com.tw.arena.attack.AttackStatus;
 import com.tw.arena.attack.Fury;
 import com.tw.arena.role.Assassin;
 import com.tw.arena.role.Knight;
-import com.tw.arena.role.Role;
 import com.tw.arena.weapon.big.LongWeapon;
 import com.tw.arena.weapon.big.Spear;
 import com.tw.arena.weapon.property.Dizzy;
@@ -42,12 +41,12 @@ public class Arena {
         Armor armor = new WoodShield("黑皇杖", 10);
         WeaponProperty dizzy = new Dizzy(0, 2, 0.4f, "晕倒了");
         LongWeapon spear = new Spear("深渊之刃", 20, dizzy);
-        Role knight = new Knight("龙", 1000, 20, spear, armor);
+        Knight knight = new Knight("龙", 1000, 20, spear, armor);
 
         WeaponProperty poison = new Poison(5, 0, 0.5f, "中毒了");
         ShortWeapon eMeiStab = new EMeiStab("蝴蝶", 20, poison);
         Armor armour = new WoodShield("强袭胸甲", 10);
-        Role assassin = new Assassin("幻影", 2000, 20, eMeiStab, armour, fury);
+        Assassin assassin = new Assassin("幻影", 2000, 20, eMeiStab, armour, fury);
 
         game.battle(knight, assassin);
     }
