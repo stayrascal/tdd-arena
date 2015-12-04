@@ -26,3 +26,7 @@ task "create-dirs" << {
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.9'
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
