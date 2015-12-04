@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.tw.arena</OriginalElement>
+  <nodes>
+    <node x="-872.0" y="1262.0">com.tw.arena.role.Solider</node>
+    <node x="18.0" y="1717.0">com.tw.arena.weapon.property.BaseWeaponProperty</node>
+    <node x="940.6190476190477" y="-38.0">com.tw.arena.weapon.LongOrMiddleWeapon</node>
+    <node x="1228.1190476190477" y="429.5">com.tw.arena.weapon.middle.Hammer</node>
+    <node x="87.0" y="2052.0">com.tw.arena.weapon.property.Frozen</node>
+    <node x="899.0" y="1937.0">com.tw.arena.attack.Fury</node>
+    <node x="339.0" y="2052.0">com.tw.arena.weapon.property.Poison</node>
+    <node x="248.0" y="2196.0">com.tw.arena.weapon.WeaponTest</node>
+    <node x="847.0" y="1671.0">com.tw.arena.attack.BaseAttackStatus</node>
+    <node x="-190.0" y="1285.0">com.tw.arena.role.Assassin</node>
+    <node x="636.6190476190477" y="-108.0">com.tw.arena.weapon.base.NoWeapon</node>
+    <node x="1867.0" y="2196.0">com.tw.arena.attack.AttackStatusTest</node>
+    <node x="1035.915476190476" y="112.0">com.tw.arena.weapon.base.BaseWeapon</node>
+    <node x="408.0" y="1740.0">com.tw.arena.weapon.property.NoWeaponProperty</node>
+    <node x="-454.00000000000006" y="1296.5">com.tw.arena.role.Normal</node>
+    <node x="-464.0" y="2196.0">com.tw.arena.Constants</node>
+    <node x="1115.0" y="2196.0">com.tw.arena.ConsolePrinterTest</node>
+    <node x="907.1190476190477" y="429.5">com.tw.arena.weapon.middle.PoisonSword</node>
+    <node x="1656.5" y="1499.0">com.tw.arena.armor.Armor</node>
+    <node x="-872.0" y="1499.0">com.tw.arena.role.RoleTest</node>
+    <node x="1464.0" y="2196.0">com.tw.arena.armor.ArmorTest</node>
+    <node x="1597.8690476190477" y="205.0">com.tw.arena.weapon.big.LongWeapon</node>
+    <node x="-614.75" y="329.0">com.tw.arena.role.Player</node>
+    <node x="805.1190476190477" y="-257.0">com.tw.arena.weapon.Weapon</node>
+    <node x="-156.0" y="2052.0">com.tw.arena.weapon.property.Dizzy</node>
+    <node x="1518.0" y="1625.0">com.tw.arena.armor.BaseArmor</node>
+    <node x="401.0" y="205.0">com.tw.arena.weapon.small.ShortWeapon</node>
+    <node x="1147.0" y="1682.5">com.tw.arena.attack.NoAttackStatus</node>
+    <node x="1740.0" y="1625.0">com.tw.arena.armor.NoArmor</node>
+    <node x="-872.0" y="2196.0">com.tw.arena.GameTest</node>
+    <node x="-668.0" y="2571.0">com.tw.arena.ConsolePrinter</node>
+    <node x="99.0" y="1285.0">com.tw.arena.role.Knight</node>
+    <node x="857.0" y="205.0">com.tw.arena.weapon.middle.MiddleWeapon</node>
+    <node x="-479.75000000000006" y="-257.0">com.tw.arena.role.Role</node>
+    <node x="-872.0" y="2571.0">com.tw.arena.Arena</node>
+    <node x="1523.1190476190477" y="418.0">com.tw.arena.weapon.big.Spear</node>
+    <node x="696.0" y="2196.0">com.tw.arena.weapon.property.WeaponPropertyTest</node>
+    <node x="256.0" y="1499.0">com.tw.arena.weapon.property.WeaponProperty</node>
+    <node x="706.9940476190477" y="429.5">com.tw.arena.weapon.middle.Cudgel</node>
+    <node x="448.6190476190477" y="-38.0">com.tw.arena.weapon.ShortOrMiddleWeapon</node>
+    <node x="-29.0" y="2196.0">com.tw.arena.Game</node>
+    <node x="1034.5" y="1499.0">com.tw.arena.attack.AttackStatus</node>
+    <node x="1524.0" y="1822.0">com.tw.arena.armor.WoodShield</node>
+    <node x="408.5" y="418.0">com.tw.arena.weapon.small.EMeiStab</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.tw.arena.weapon.base.NoWeapon" target="com.tw.arena.weapon.Weapon">
+      <point x="0.0" y="-85.0" />
+      <point x="778.6190476190477" y="-128.0" />
+      <point x="877.1190476190477" y="-128.0" />
+      <point x="-24.0" y="49.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.middle.Hammer" target="com.tw.arena.weapon.base.BaseWeapon">
+      <point x="68.75" y="-26.5" />
+      <point x="1434.3690476190477" y="358.0" />
+      <point x="1219.3154761904761" y="358.0" />
+      <point x="52.39999999999998" y="108.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.small.ShortWeapon" target="com.tw.arena.weapon.ShortOrMiddleWeapon">
+      <point x="0.0" y="-15.0" />
+      <point x="457.0" y="92.0" />
+      <point x="490.6190476190477" y="92.0" />
+      <point x="-42.0" y="15.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.ShortOrMiddleWeapon" target="com.tw.arena.weapon.Weapon">
+      <point x="0.0" y="-15.0" />
+      <point x="532.6190476190477" y="-138.0" />
+      <point x="829.1190476190477" y="-138.0" />
+      <point x="-72.0" y="49.5" />
+    </edge>
+    <edge source="com.tw.arena.attack.BaseAttackStatus" target="com.tw.arena.attack.AttackStatus">
+      <point x="0.0" y="-108.0" />
+      <point x="987.0" y="1646.0" />
+      <point x="1091.5" y="1646.0" />
+      <point x="-57.0" y="61.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.property.BaseWeaponProperty" target="com.tw.arena.weapon.property.WeaponProperty">
+      <point x="0.0" y="-142.5" />
+      <point x="203.0" y="1692.0" />
+      <point x="330.0" y="1692.0" />
+      <point x="-74.0" y="84.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.LongOrMiddleWeapon" target="com.tw.arena.weapon.Weapon">
+      <point x="0.0" y="-15.0" />
+      <point x="1023.6190476190477" y="-128.0" />
+      <point x="925.1190476190477" y="-128.0" />
+      <point x="24.0" y="49.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.middle.PoisonSword" target="com.tw.arena.weapon.middle.MiddleWeapon">
+      <point x="-75.25" y="-26.5" />
+      <point x="982.3690476190477" y="378.0" />
+      <point x="918.0" y="378.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.tw.arena.role.Normal" target="com.tw.arena.role.Player">
+      <point x="0.0" y="-61.5" />
+      <point x="-332.0" y="1237.0" />
+      <point x="-299.0" y="1237.0" />
+      <point x="-105.25" y="441.5" />
+    </edge>
+    <edge source="com.tw.arena.role.Knight" target="com.tw.arena.role.Player">
+      <point x="0.0" y="-73.0" />
+      <point x="227.5" y="1237.0" />
+      <point x="122.0" y="1237.0" />
+      <point x="315.75" y="441.5" />
+    </edge>
+    <edge source="com.tw.arena.attack.Fury" target="com.tw.arena.attack.BaseAttackStatus">
+      <point x="0.0" y="-26.5" />
+      <point x="0.0" y="108.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.big.LongWeapon" target="com.tw.arena.weapon.LongOrMiddleWeapon">
+      <point x="0.0" y="-15.0" />
+      <point x="1652.8690476190477" y="82.0" />
+      <point x="1065.1190476190477" y="82.0" />
+      <point x="41.5" y="15.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.middle.Cudgel" target="com.tw.arena.weapon.base.BaseWeapon">
+      <point x="40.0" y="-26.5" />
+      <point x="826.9940476190477" y="398.0" />
+      <point x="1114.5154761904762" y="398.0" />
+      <point x="-52.39999999999998" y="108.0" />
+    </edge>
+    <edge source="com.tw.arena.role.Solider" target="com.tw.arena.role.Player">
+      <point x="0.0" y="-96.0" />
+      <point x="-673.0" y="1237.0" />
+      <point x="-509.50000000000006" y="1237.0" />
+      <point x="-315.75" y="441.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.property.Dizzy" target="com.tw.arena.weapon.property.BaseWeaponProperty">
+      <point x="0.0" y="-38.5" />
+      <point x="-44.5" y="2027.0" />
+      <point x="79.66666666666674" y="2027.0" />
+      <point x="-123.33333333333331" y="142.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.property.NoWeaponProperty" target="com.tw.arena.weapon.property.WeaponProperty">
+      <point x="0.0" y="-119.5" />
+      <point x="605.0" y="1692.0" />
+      <point x="478.0" y="1692.0" />
+      <point x="74.0" y="84.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.middle.Hammer" target="com.tw.arena.weapon.middle.MiddleWeapon">
+      <point x="-68.75" y="-26.5" />
+      <point x="1296.8690476190477" y="368.0" />
+      <point x="958.6666666666667" y="368.0" />
+      <point x="40.666666666666686" y="15.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.middle.PoisonSword" target="com.tw.arena.weapon.base.BaseWeapon">
+      <point x="75.25" y="-26.5" />
+      <point x="1132.8690476190477" y="398.0" />
+      <point x="1166.915476190476" y="398.0" />
+      <point x="0.0" y="108.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.big.Spear" target="com.tw.arena.weapon.base.BaseWeapon">
+      <point x="-43.25" y="-38.0" />
+      <point x="1566.3690476190477" y="348.0" />
+      <point x="1271.7154761904762" y="348.0" />
+      <point x="104.79999999999995" y="108.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.property.Frozen" target="com.tw.arena.weapon.property.BaseWeaponProperty">
+      <point x="0.0" y="-38.5" />
+      <point x="0.0" y="142.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.property.Poison" target="com.tw.arena.weapon.property.BaseWeaponProperty">
+      <point x="0.0" y="-38.5" />
+      <point x="455.0" y="2027.0" />
+      <point x="326.33333333333326" y="2027.0" />
+      <point x="123.33333333333331" y="142.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.small.EMeiStab" target="com.tw.arena.weapon.base.BaseWeapon">
+      <point x="48.5" y="-38.0" />
+      <point x="554.0" y="388.0" />
+      <point x="1062.1154761904763" y="388.0" />
+      <point x="-104.79999999999995" y="108.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.middle.MiddleWeapon" target="com.tw.arena.weapon.ShortOrMiddleWeapon">
+      <point x="-30.5" y="-15.0" />
+      <point x="887.5" y="92.0" />
+      <point x="574.6190476190477" y="92.0" />
+      <point x="42.0" y="15.0" />
+    </edge>
+    <edge source="com.tw.arena.armor.BaseArmor" target="com.tw.arena.armor.Armor">
+      <point x="0.0" y="-73.5" />
+      <point x="1619.0" y="1600.0" />
+      <point x="1699.5" y="1600.0" />
+      <point x="-43.0" y="38.0" />
+    </edge>
+    <edge source="com.tw.arena.role.Player" target="com.tw.arena.role.Role">
+      <point x="0.0" y="-441.5" />
+      <point x="0.0" y="268.0" />
+    </edge>
+    <edge source="com.tw.arena.attack.NoAttackStatus" target="com.tw.arena.attack.AttackStatus">
+      <point x="0.0" y="-96.5" />
+      <point x="1310.0" y="1646.0" />
+      <point x="1205.5" y="1646.0" />
+      <point x="57.0" y="61.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.base.BaseWeapon" target="com.tw.arena.weapon.Weapon">
+      <point x="0.0" y="-108.0" />
+      <point x="1166.915476190476" y="92.0" />
+      <point x="1205.9970238095239" y="92.0" />
+      <point x="1205.9970238095239" y="-138.0" />
+      <point x="973.1190476190477" y="-138.0" />
+      <point x="72.0" y="49.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.middle.Cudgel" target="com.tw.arena.weapon.middle.MiddleWeapon">
+      <point x="-40.0" y="-26.5" />
+      <point x="746.9940476190477" y="378.0" />
+      <point x="877.3333333333333" y="378.0" />
+      <point x="-40.666666666666686" y="15.0" />
+    </edge>
+    <edge source="com.tw.arena.armor.NoArmor" target="com.tw.arena.armor.Armor">
+      <point x="0.0" y="-73.5" />
+      <point x="1866.0" y="1600.0" />
+      <point x="1785.5" y="1600.0" />
+      <point x="43.0" y="38.0" />
+    </edge>
+    <edge source="com.tw.arena.armor.WoodShield" target="com.tw.arena.armor.BaseArmor">
+      <point x="0.0" y="-26.5" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.middle.MiddleWeapon" target="com.tw.arena.weapon.LongOrMiddleWeapon">
+      <point x="30.5" y="-15.0" />
+      <point x="948.5" y="92.0" />
+      <point x="982.1190476190477" y="92.0" />
+      <point x="-41.5" y="15.0" />
+    </edge>
+    <edge source="com.tw.arena.weapon.small.EMeiStab" target="com.tw.arena.weapon.small.ShortWeapon">
+      <point x="-48.5" y="-38.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.tw.arena.role.Assassin" target="com.tw.arena.role.Player">
+      <point x="0.0" y="-73.0" />
+      <point x="-55.5" y="1237.0" />
+      <point x="-88.5" y="1237.0" />
+      <point x="105.25" y="441.5" />
+    </edge>
+    <edge source="com.tw.arena.weapon.big.Spear" target="com.tw.arena.weapon.big.LongWeapon">
+      <point x="43.25" y="-38.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="-70.5" y="949.142857142857" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
