@@ -6,7 +6,7 @@ import com.tw.arena.attack.AttackStatus;
 import com.tw.arena.attack.Fury;
 import com.tw.arena.role.Assassin;
 import com.tw.arena.role.Knight;
-import com.tw.arena.role.Normal;
+import com.tw.arena.role.Person;
 import com.tw.arena.role.Solider;
 import com.tw.arena.weapon.ShortOrMiddleWeapon;
 import com.tw.arena.weapon.middle.Cudgel;
@@ -48,9 +48,9 @@ public class GameTest {
     @Test
     public void shouldReturnTheDetailOfBattleBetweenSoliderAndNormal() {
         Solider solider = new Solider("张三", 20, 10, new Cudgel("优质木棒", 5), new WoodShield("草帽", 3));
-        Normal normal = new Normal("李四", 44, 5);
+        Person person = new Person("李四", 44, 5);
 
-        game.battle(solider, normal);
+        game.battle(solider, person);
         inOrder.verify(printer, times(1)).print("战士张三用优质木棒攻击了普通人李四,李四受到了15点伤害,李四剩余生命: 29");
         inOrder.verify(printer, times(1)).print("普通人李四攻击了装备了草帽的战士张三,张三受到了2点伤害,张三剩余生命: 18");
         inOrder.verify(printer, times(1)).print("战士张三用优质木棒攻击了普通人李四,李四受到了15点伤害,李四剩余生命: 14");
@@ -61,8 +61,8 @@ public class GameTest {
 
     @Test
     public void shouldReturnTheDetailOfBattleBetweenNormalAndNormal() {
-        Normal liSi = new Normal("李四", 20, 11);
-        Normal zhangSan = new Normal("张三", 20, 20);
+        Person liSi = new Person("李四", 20, 11);
+        Person zhangSan = new Person("张三", 20, 20);
 
         game.battle(liSi, zhangSan);
 
@@ -93,9 +93,9 @@ public class GameTest {
         MiddleWeapon sword = new PoisonSword("优质毒剑", 10, poison);
         Armor armor = new WoodShield("木盾", 10);
         Solider solider = new Solider("张三", 20, 10, sword, armor);
-        Normal normal = new Normal("李四", 30, 5);
+        Person person = new Person("李四", 30, 5);
 
-        game.battle(solider, normal);
+        game.battle(solider, person);
 
         inOrder.verify(printer, times(1)).print("战士张三用优质毒剑攻击了普通人李四,李四受到了20点伤害,李四中毒了,李四剩余生命: 10李四受到了5点毒性伤害,李四剩余生命: 5");
         inOrder.verify(printer, times(1)).print("普通人李四攻击了装备了木盾的战士张三,张三受到了0点伤害,张三剩余生命: 20");
@@ -109,9 +109,9 @@ public class GameTest {
         MiddleWeapon hammer = new Hammer("晕锤", 10, dizzy);
         Armor armor = new WoodShield("木盾", 10);
         Solider solider = new Solider("张三", 20, 10, hammer, armor);
-        Normal normal = new Normal("李四", 30, 5);
+        Person person = new Person("李四", 30, 5);
 
-        game.battle(solider, normal);
+        game.battle(solider, person);
 
         inOrder.verify(printer, times(1)).print("战士张三用晕锤攻击了普通人李四,李四受到了20点伤害,李四晕倒了,李四剩余生命: 10李四晕倒了,无法攻击,眩晕还剩: 1轮");
         inOrder.verify(printer, times(1)).print("战士张三用晕锤攻击了普通人李四,李四受到了20点伤害,李四晕倒了,李四剩余生命: -10李四晕倒了,无法攻击,眩晕还剩: 2轮");
@@ -125,9 +125,9 @@ public class GameTest {
         MiddleWeapon hammer = new Hammer("晕锤", 10, dizzy);
         Armor armor = new WoodShield("木盾", 10);
         Solider solider = new Solider("张三", 20, 10, hammer, armor, fury);
-        Normal normal = new Normal("李四", 30, 5);
+        Person person = new Person("李四", 30, 5);
 
-        game.battle(solider, normal);
+        game.battle(solider, person);
 
         inOrder.verify(printer, times(1)).print("战士张三用晕锤攻击了普通人李四,张三发动了全力一击,李四受到了60点伤害,李四晕倒了,李四剩余生命: -30李四晕倒了,无法攻击,眩晕还剩: 1轮");
     }

@@ -1,7 +1,7 @@
 package com.tw.arena.weapon.property;
 
 import com.tw.arena.Constants;
-import com.tw.arena.role.Player;
+import com.tw.arena.role.Person;
 
 public class Poison extends BaseWeaponProperty {
 
@@ -11,7 +11,7 @@ public class Poison extends BaseWeaponProperty {
     }
 
     @Override
-    public String getPropertyDamageDetail(Player victim, float probability) {
+    public String getPropertyDamageDetail(Person victim, float probability) {
         if (probability < getProbability()) {
             victim.beAttackedByWeaponEffect(getPropertyDamage());
             return String.format(Constants.POISON_PROPERTY_EFFECT, victim.getName(),

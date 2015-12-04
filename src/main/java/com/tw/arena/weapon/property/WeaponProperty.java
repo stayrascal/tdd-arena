@@ -1,6 +1,6 @@
 package com.tw.arena.weapon.property;
 
-import com.tw.arena.role.Player;
+import com.tw.arena.role.Person;
 
 public interface WeaponProperty {
 
@@ -12,7 +12,7 @@ public interface WeaponProperty {
 
     void setProbability(float probability);
 
-    String getPropertyDamageEffect(Player victim, float probability);
+    String getPropertyDamageEffect(Person victim, float probability);
 
-    String getPropertyDamageDetail(Player victim, float probability);
+    String getPropertyDamageDetail(Person victim, float probability);
 }

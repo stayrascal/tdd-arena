@@ -18,4 +18,10 @@ public class Constants {
 
     public static final String BATTLE_DETAIL = "%s%s攻击了%s%s,%s%s受到了%d点伤害,%s%s剩余生命: %d%s";
 
+    public static final String ATTACKED_BY_NORMAL_DETAIL = "%s攻击了%s%s,%s受到了%d点伤害,%s剩余生命: %d";
+
+    public static final String NORMAL_BEEN_ATTACKED_BY_SENIOR_DETAIL = "%s%s攻击了%s,%s%s受到了%d点伤害,%s%s剩余生命: %d%s";
+
+    public static final String NORMAL_BEEN_ATTACKED_BY_NORMAL_DETAIL = "%s攻击了%s,%s受到了%d点伤害,%s剩余生命: %d";
+
 }

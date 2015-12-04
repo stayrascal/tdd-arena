@@ -1,6 +1,6 @@
 package com.tw.arena.weapon.property;
 
-import com.tw.arena.role.Player;
+import com.tw.arena.role.Person;
 
 public class NoWeaponProperty implements WeaponProperty {
 
@@ -33,12 +33,12 @@ public class NoWeaponProperty implements WeaponProperty {
     }
 
     @Override
-    public String getPropertyDamageEffect(Player victim, float probability) {
+    public String getPropertyDamageEffect(Person victim, float probability) {
         return "";
     }
 
     @Override
-    public String getPropertyDamageDetail(Player victim, float probability) {
+    public String getPropertyDamageDetail(Person victim, float probability) {
         return "";
     }
 }

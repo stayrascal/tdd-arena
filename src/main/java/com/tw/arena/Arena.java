@@ -27,11 +27,11 @@ public class Arena {
         WeaponProperty dizzy = new Dizzy(0, 2, 0.4f, "晕倒了");
         MiddleWeapon hammer = new Hammer("晕锤", 10, dizzy);
         Armor armor = new WoodShield("木盾", 10);
-        Player solider = new Solider("张三", 100, 12, hammer, armor, fury);
+        Person solider = new Solider("张三", 100, 12, hammer, armor, fury);
 
         WeaponProperty poison = new Poison(5, 0, 0.5f, "中毒了");
         MiddleWeapon poisonSword = new PoisonSword("毒剑", 10, poison);
-        Player normal = new Solider("李四", 2000, 10, poisonSword);
+        Person normal = new Solider("李四", 2000, 10, poisonSword);
 
         game.battle(solider, normal);*/
 

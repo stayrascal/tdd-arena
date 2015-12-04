@@ -40,18 +40,17 @@ public class RoleTest {
 
     @Test
     public void shoudReturnCorrectBasicInfoAboutNormal() {
-        Normal normal = new Normal("张三", 100, 5);
+        Person person = new Person("张三", 100, 5);
 
-        assertThat(normal.getName(), is("张三"));
-        assertThat(normal.getBlood(), is(100));
-        assertThat(normal.getDamage(), is(5));
-        assertThat(normal.getDefense(), is(0));
-        assertThat(normal.getDelay(), is(0));
-        assertThat(normal.getRoleType(), is("普通人"));
-        assertThat(normal.getRoleIdentity(), is("普通人张三"));
-        assertThat(normal.getAttackType(), is(""));
-        assertThat(normal.isAlive(), is(true));
-        assertThat(normal.isReadly(), is(true));
+        assertThat(person.getName(), is("张三"));
+        assertThat(person.getBlood(), is(100));
+        assertThat(person.getDamage(), is(5));
+        assertThat(person.getDefense(), is(0));
+        assertThat(person.getDelay(), is(0));
+        assertThat(person.getRoleType(), is("普通人"));
+        assertThat(person.getRoleIdentity(), is("普通人张三"));
+        assertThat(person.isAlive(), is(true));
+        assertThat(person.isReadly(), is(true));
     }
 
     @Test
@@ -134,9 +133,9 @@ public class RoleTest {
     public void shoudReturnDetailAboutZhangSanAttackLiSi() {
         MiddleWeapon weapon = new Cudgel("优质木棒", 5);
         Solider solider = new Solider("张三", 100, 3, weapon);
-        Normal normal = new Normal("李四", 20, 2);
+        Person person = new Person("李四", 20, 2);
 
-        String detail = normal.beAttacked(solider, random.nextFloat());
+        String detail = person.beAttacked(solider, random.nextFloat());
         assertThat(detail, is("战士张三用优质木棒攻击了普通人李四,李四受到了8点伤害,李四剩余生命: 12"));
     }
 
@@ -144,9 +143,9 @@ public class RoleTest {
     public void shouldReturn0WhenDamageLessThanDefense() {
         Armor armor = new WoodShield("木盾", 5);
         Solider solider = new Solider("张三", 100, 3, armor);
-        Normal normal = new Normal("李四", 20, 2);
+        Person person = new Person("李四", 20, 2);
 
-        String detail = solider.beAttacked(normal, random.nextFloat());
+        String detail = solider.beAttacked(person, random.nextFloat());
 
         assertThat(detail, is("普通人李四攻击了装备了木盾的战士张三,张三受到了0点伤害,张三剩余生命: 100"));
     }
@@ -155,9 +154,9 @@ public class RoleTest {
     public void shouldReturnCorrectDamageWhenDamageMoreThanDefense() {
         Armor armor = new WoodShield("木盾", 5);
         Solider solider = new Solider("张三", 100, 3, armor);
-        Normal normal = new Normal("李四", 20, 7);
+        Person person = new Person("李四", 20, 7);
 
-        String detail = solider.beAttacked(normal, random.nextFloat());
+        String detail = solider.beAttacked(person, random.nextFloat());
 
         assertThat(detail, is("普通人李四攻击了装备了木盾的战士张三,张三受到了2点伤害,张三剩余生命: 98"));
     }
@@ -167,7 +166,7 @@ public class RoleTest {
         WeaponProperty poison = new Poison(2, 0, 0.6f, "中毒了");
         MiddleWeapon poisonSword = new PoisonSword("优质毒剑", 10, poison);
         Solider solider = new Solider("张三", 100, 10, poisonSword);
-        Normal victim = new Normal("李四", 100, 5);
+        Person victim = new Person("李四", 100, 5);
 
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(2));
         assertThat(victim.getDelay(), is(0));
@@ -181,7 +180,7 @@ public class RoleTest {
         WeaponProperty dizzy = new Dizzy(0, 1, 0.6f, "晕倒了");
         MiddleWeapon dizzyHammer = new Hammer("晕锤", 10, dizzy);
         Solider solider = new Solider("张三", 100, 10, dizzyHammer);
-        Normal victim = new Normal("李四", 100, 5);
+        Person victim = new Person("李四", 100, 5);
 
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(0));
         assertThat(dizzy.getDelayTimes(), is(1));
@@ -196,7 +195,7 @@ public class RoleTest {
         WeaponProperty dizzy = new Dizzy(0, 1, 0.6f, "晕倒了");
         MiddleWeapon dizzyHammer = new Hammer("晕锤", 10, dizzy);
         Solider solider = new Solider("张三", 100, 10, dizzyHammer);
-        Normal victim = new Normal("李四", 100, 5);
+        Person victim = new Person("李四", 100, 5);
 
         assertThat(solider.getWeapon().getWeaponProperty().getPropertyDamage(), is(0));
         assertThat(dizzy.getDelayTimes(), is(1));
@@ -211,14 +210,14 @@ public class RoleTest {
 
     @Test
     public void theDelayOfPlayerShouldBeRightAfterBeDelayedOrDecreaseDelay() {
-        Normal normal = new Normal("张三", 100, 10);
-        normal.beDelay(1);
+        Person person = new Person("张三", 100, 10);
+        person.beDelay(1);
 
-        assertThat(normal.getDelay(), is(1));
+        assertThat(person.getDelay(), is(1));
 
-        normal.decreaseDelay(10);
+        person.decreaseDelay(10);
 
-        assertThat(normal.getDelay(), is(0));
+        assertThat(person.getDelay(), is(0));
     }
 
     @Test
@@ -244,22 +243,6 @@ public class RoleTest {
         solider.beAttackedByWeaponEffect(10);
 
         assertThat(solider.getBlood(), is(90));
-    }
-
-    @Test(expected = RuntimeException.class)
-    public void shouldReturnRunTimeExceptionWhenNormalEquipWeapon() {
-        Normal normal = new Normal("张三", 100, 10);
-        Weapon weapon = new Cudgel("优质木棒", 5);
-
-        normal.setWeapon(weapon);
-    }
-
-    @Test(expected = RuntimeException.class)
-    public void shouldReturnRunTimeExceptionWhenNormalEquipArmor() {
-        Normal normal = new Normal("张三", 100, 10);
-        Armor woodShield = new WoodShield("木盾", 10);
-
-        normal.setArmor(woodShield);
     }
 
     @Test(expected = RuntimeException.class)

@@ -4,7 +4,8 @@ import com.tw.arena.armor.Armor;
 import com.tw.arena.attack.AttackStatus;
 import com.tw.arena.weapon.Weapon;
 import com.tw.arena.weapon.middle.MiddleWeapon;
-public class Solider extends Player {
+
+public class Solider extends SeniorRoler {
 
     public Solider(String name, int blood, int damage, MiddleWeapon weapon) {
         super(name, blood, damage, weapon);

@@ -1,13 +1,8 @@
 package com.tw.arena.weapon.property;
 
-import com.tw.arena.role.Player;
+import com.tw.arena.role.Person;
 
-/**
- * Date: 2015/12/1
- * Time: 9:33
- *
- * @author Rascal
- */
+
 public abstract class BaseWeaponProperty implements WeaponProperty {
 
     private int propertyDamage;
@@ -50,7 +45,7 @@ public abstract class BaseWeaponProperty implements WeaponProperty {
     }
 
     @Override
-    public String getPropertyDamageEffect(Player victim, float probability) {
+    public String getPropertyDamageEffect(Person victim, float probability) {
         if (getProbability() > probability) {
             victim.beDelay(getDelayTimes());
             return victim.getName() + propertyDamageEffect + ",";

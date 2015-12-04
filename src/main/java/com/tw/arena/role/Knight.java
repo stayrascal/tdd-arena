@@ -5,7 +5,7 @@ import com.tw.arena.weapon.LongOrMiddleWeapon;
 import com.tw.arena.weapon.Weapon;
 import com.tw.arena.weapon.big.LongWeapon;
 
-public class Knight extends Player {
+public class Knight extends SeniorRoler {
     public Knight(String name, int blood, int damage) {
         super(name, blood, damage);
     }

@@ -2,7 +2,7 @@ package com.tw.arena.attack;
 
 
 import com.tw.arena.Constants;
-import com.tw.arena.role.Player;
+import com.tw.arena.role.SeniorRoler;
 
 public abstract class BaseAttackStatus implements AttackStatus {
 
@@ -32,7 +32,7 @@ public abstract class BaseAttackStatus implements AttackStatus {
     }
 
     @Override
-    public String getStatusEffect(Player attacker, float probability) {
+    public String getStatusEffect(SeniorRoler attacker, float probability) {
         return probability < getProbability() ? String.format(Constants.ATTACK_STATUS_EFFECT, attacker.getName(), getDescribe()) : "";
     }
 }

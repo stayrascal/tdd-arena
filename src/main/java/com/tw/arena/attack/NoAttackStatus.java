@@ -1,6 +1,6 @@
 package com.tw.arena.attack;
 
-import com.tw.arena.role.Player;
+import com.tw.arena.role.SeniorRoler;
 
 
 public class NoAttackStatus implements AttackStatus {
@@ -30,7 +30,7 @@ public class NoAttackStatus implements AttackStatus {
     }
 
     @Override
-    public String getStatusEffect(Player attacker, float probability) {
+    public String getStatusEffect(SeniorRoler attacker, float probability) {
         return "";
     }
 }

@@ -7,7 +7,7 @@ import com.tw.arena.weapon.ShortOrMiddleWeapon;
 import com.tw.arena.weapon.Weapon;
 import com.tw.arena.weapon.small.ShortWeapon;
 
-public class Assassin extends Player {
+public class Assassin extends SeniorRoler {
 
     public Assassin(String name, int blood, int damage) {
         super(name, blood, damage);

@@ -1,6 +1,6 @@
 package com.tw.arena;
 
-import com.tw.arena.role.Player;
+import com.tw.arena.role.Person;
 
 import java.util.Random;
 
@@ -14,10 +14,10 @@ public class Game {
         this.random = random;
     }
 
-    public void battle(Player playerA, Player palyerB) {
-        Player attacker = playerA;
-        Player victim = palyerB;
-        Player loser = attacker;
+    public void battle(Person playerA, Person palyerB) {
+        Person attacker = playerA;
+        Person victim = palyerB;
+        Person loser = attacker;
         while (attacker.isAlive()) {
             if (attacker.isReadly()) {
                 printer.print(victim.beAttacked(attacker, random.nextFloat()));
