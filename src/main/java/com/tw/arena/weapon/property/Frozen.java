@@ -1,7 +1,7 @@
 package com.tw.arena.weapon.property;
 
 import com.tw.arena.Constants;
-import com.tw.arena.role.Role;
+import com.tw.arena.role.Player;
 
 public class Frozen extends BaseWeaponProperty {
 
@@ -10,7 +10,7 @@ public class Frozen extends BaseWeaponProperty {
     }
 
     @Override
-    public String getPropertyDamageDetail(Role victim, float probability) {
+    public String getPropertyDamageDetail(Player victim, float probability) {
         return getProbability() > probability ? String.format(Constants.FROZEN_PROPERTY_EFFECT, victim.getName(), victim.getDelay() - 1) : "";
     }
 }

@@ -1,6 +1,6 @@
 package com.tw.arena.weapon.property;
 
-import com.tw.arena.role.Role;
+import com.tw.arena.role.Player;
 
 /**
  * Date: 2015/12/1
@@ -50,7 +50,7 @@ public abstract class BaseWeaponProperty implements WeaponProperty {
     }
 
     @Override
-    public String getPropertyDamageEffect(Role victim, float probability) {
+    public String getPropertyDamageEffect(Player victim, float probability) {
         if (getProbability() > probability) {
             victim.beDelay(getDelayTimes());
             return victim.getName() + propertyDamageEffect + ",";

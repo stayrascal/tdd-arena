@@ -1,7 +1,7 @@
 package com.tw.arena.attack;
 
 
-import com.tw.arena.role.Role;
+import com.tw.arena.role.Player;
 import com.tw.arena.role.Solider;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class AttackStatusTest {
     @Test
     public void shouldReturnCorrectInfoAboutFury() {
         AttackStatus fury = new Fury("全力一击", 3, 0.6f);
-        Role solider = new Solider("张三", 100, 10);
+        Player solider = new Solider("张三", 100, 10);
 
         assertThat(fury.getDescribe(), is("全力一击"));
         assertThat(fury.getMultiple(), is(3));
@@ -24,7 +24,7 @@ public class AttackStatusTest {
     @Test
     public void shouldReturnCorrectInofAboutNoAttackStatus() {
         AttackStatus noAttackStatus = NoAttackStatus.getInstance();
-        Role solider = new Solider("张三", 100, 10);
+        Player solider = new Solider("张三", 100, 10);
 
         assertThat(noAttackStatus.getProbability(), is(0f));
         assertThat(noAttackStatus.getDescribe(), is(""));

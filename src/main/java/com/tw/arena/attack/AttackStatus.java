@@ -1,7 +1,7 @@
 package com.tw.arena.attack;
 
 
-import com.tw.arena.role.Role;
+import com.tw.arena.role.Player;
 
 public interface AttackStatus {
 
@@ -11,5 +11,5 @@ public interface AttackStatus {
 
     float getProbability();
 
-    String getStatusEffect(Role attacker, float probability);
+    String getStatusEffect(Player attacker, float probability);
 }

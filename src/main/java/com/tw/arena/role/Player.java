@@ -12,7 +12,7 @@ import java.util.Objects;
 
 import static java.lang.String.format;
 
-public abstract class Player implements Role {
+public abstract class Player {
 
     private String name;
 
@@ -61,88 +61,71 @@ public abstract class Player implements Role {
         this(name, blood, damage, 0, 0, weapon, armor, attackStatus);
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public int getBlood() {
         return blood;
     }
 
-    @Override
     public int getDamage() {
         return damage;
     }
 
-    @Override
     public int getDefense() {
         return defense;
     }
 
-    @Override
     public int getDelay() {
         return delay;
     }
 
-    @Override
     public Weapon getWeapon() {
         return weapon;
     }
 
-    @Override
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 
-    @Override
     public Armor getArmor() {
         return armor;
     }
 
-    @Override
     public void setArmor(Armor armor) {
         this.armor = armor;
     }
 
-    @Override
     public String getRoleIdentity() {
         return format("%s%s", getRoleType(), getName());
     }
 
-    @Override
     public boolean isAlive() {
         return getBlood() >= 0;
     }
 
-    @Override
     public boolean isReadly() {
         return getDelay() == 0;
     }
 
-    @Override
     public void beDelay(int delayTimes) {
         this.delay += delayTimes;
     }
 
-    @Override
     public void decreaseDelay(int delayTimes) {
         this.delay = delayTimes > this.delay ? 0 : this.delay - delayTimes;
     }
 
-    @Override
     public String getAttackType() {
         return Objects.equals(getWeapon().getName(), "") ? "" : format(Constants.ATTACK_TYPE, getWeapon().getName());
     }
 
-    @Override
     public String getArmorType() {
         return Objects.equals(getArmor().getName(), "") ? "" : format(Constants.ARMOR_TYPE, getArmor().getName());
     }
 
-    @Override
-    public String beAttacked(Role attacker, float probability) {
+    public String beAttacked(Player attacker, float probability) {
         int damage = getDamageByAttackStatus(attacker, probability);
         int nowBlood = this.blood;
         String attackStatusEffect = attacker.getAttackStatus().getStatusEffect(attacker, probability);
@@ -163,7 +146,7 @@ public abstract class Player implements Role {
                 propertyDamageDetail);
     }
 
-    private int getDamageByAttackStatus(Role attacker, float probability) {
+    private int getDamageByAttackStatus(Player attacker, float probability) {
         attacker.setAttackStatus(attacker.getAttackStatus(), probability);
         int damage = blood(attacker.getDamage());
         this.blood -= damage;
@@ -174,17 +157,14 @@ public abstract class Player implements Role {
         return damage > getDefense() ? damage - getDefense() : 0;
     }
 
-    @Override
     public void beAttackedByWeaponEffect(int damage) {
         this.blood -= damage;
     }
 
-    @Override
     public AttackStatus getAttackStatus() {
         return attackStatus;
     }
 
-    @Override
     public void setAttackStatus(AttackStatus attackStatus, float probability) {
         if (attackStatus.getProbability() > probability) {
             this.attackStatus = attackStatus;
@@ -192,10 +172,11 @@ public abstract class Player implements Role {
         }
     }
 
-    @Override
     public void cancelAttackStatus(AttackStatus attackStatus, float probability) {
         if (attackStatus.getProbability() > probability) {
             this.damage /= attackStatus.getMultiple();
         }
     }
+
+    abstract String getRoleType();
 }

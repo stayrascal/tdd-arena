@@ -1,7 +1,7 @@
 package com.tw.arena.weapon.property;
 
 
-import com.tw.arena.role.Role;
+import com.tw.arena.role.Player;
 import com.tw.arena.role.Solider;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class WeaponPropertyTest {
     @Test
     public void shouldReturnCorrectInfoAboutPosion() {
         WeaponProperty poison = new Poison(5, 0, 0.6f, "中毒了");
-        Role victim = new Solider("张三", 100, 10);
+        Player victim = new Solider("张三", 100, 10);
 
         assertThat(poison.getProbability(), is(0.6f));
         assertThat(poison.getDelayTimes(), is(0));
@@ -29,7 +29,7 @@ public class WeaponPropertyTest {
     @Test
     public void shouldReturnCorrectInfoAboutDizzy() {
         WeaponProperty dizzy = new Dizzy(0, 2, 0.6f, "晕倒了");
-        Role victim = new Solider("张三", 100, 10);
+        Player victim = new Solider("张三", 100, 10);
 
         assertThat(dizzy.getDelayTimes(), is(2));
         assertThat(dizzy.getPropertyDamage(), is(0));
@@ -45,7 +45,7 @@ public class WeaponPropertyTest {
     @Test
     public void shouldReturnCorrectInfoAboutFrozen() {
         WeaponProperty frozen = new Frozen(0, 1, 0.6f, "冻僵了");
-        Role victim = new Solider("张三", 100, 10);
+        Player victim = new Solider("张三", 100, 10);
 
         assertThat(frozen.getDelayTimes(), is(1));
         assertThat(frozen.getPropertyDamage(), is(0));
@@ -61,7 +61,7 @@ public class WeaponPropertyTest {
     @Test
     public void shouldReturnCorrectInfoAboutNoWeaponProperty() {
         WeaponProperty noWeaponProperty = NoWeaponProperty.getInstance();
-        Role victim = new Solider("张三", 100, 10);
+        Player victim = new Solider("张三", 100, 10);
 
         assertThat(noWeaponProperty.getPropertyDamage(), is(0));
         assertThat(noWeaponProperty.getProbability(), is(0f));
