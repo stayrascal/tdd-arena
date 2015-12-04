@@ -1,3 +1,5 @@
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile
+
 group 'com.tw.arena'
 version '1.0-SNAPASHOT'
 
@@ -15,6 +17,14 @@ dependencies {
 	compile 'com.google.inject:guice:4.0'
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.mockito:mockito-all:1.9.5'
+}
+
+tasks.withType(Compile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 task "create-dirs" << {
